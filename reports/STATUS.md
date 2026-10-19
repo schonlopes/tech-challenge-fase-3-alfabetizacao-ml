@@ -4,7 +4,7 @@ Extração autorizada e concluída: 92.389 registros válidos de alunos de 2024,
 
 O experimento inicial selecionou regressão logística. A segunda versão testou contexto socioeconômico, mas não superou o modelo anterior na validação. Seus municípios de teste foram excluídos do novo desenvolvimento. Há SHAP global, dois perfis territoriais, análise de metas e cenários com limites explícitos. Relatórios em `v1/`, `v2/` e `territorial/`.
 
-Verificação: **25 testes aprovados**, incluindo contratos, integridade, grupos sem sobreposição, preparação sem vazamento, enriquecimento, metas ausentes, cenários, backtest e agregação de SHAP. Os testes artificiais verificam o software; os relatórios de resultados usam dados reais e distinguem validação e teste.
+Verificação: **36 testes aprovados**, incluindo contratos, integridade, grupos sem sobreposição, preparação sem vazamento, enriquecimento, metas ausentes, cenários, backtest, agregação de SHAP, previsão sem refit, recarga do artefato, isolamento de saídas e demo sem nuvem. Os testes artificiais verificam o software; os relatórios de resultados usam dados reais e distinguem validação e teste.
 
 SQL, metadados reduzidos de jobs e hash do snapshot estão em `evidence/`. O experimento verifica o hash antes do treinamento. Após o bloqueio inicial, houve autorização específica do usuário para a extração. Uma falha de codificação do Windows foi corrigida recuperando o resultado do mesmo job, sem repetir a consulta de extração.
 
@@ -14,7 +14,15 @@ A primeira tentativa foi interrompida por limitação do controle da interface. 
 
 ## Versionamento
 
-Três branches locais de desenvolvimento criadas. O plano de publicação e integração por PR está em `../docs/GIT_WORKFLOW.md`. Nenhum push, PR remoto ou integração à main foi realizado nesta etapa.
+Quatro branches locais de desenvolvimento criadas. A quarta, `feat/reproducible-inference`, contém as melhorias de engenharia e a política explícita do modelo. O plano de publicação e integração por PR está em `../docs/GIT_WORKFLOW.md`. Nenhum push, PR remoto ou integração à main foi realizado nesta etapa.
+
+## Melhorias de engenharia
+
+A logística original permanece a referência; escores são o padrão da ferramenta, sem alerta automático. Os limiares F2 histórico e de capacidade exploratória estão separados em [modelo e política](../docs/modelo_e_politica.md). Há demo artificial completa sem conta GCP, previsão CSV/Parquet por artefato confiável e manifests por execução. Novas saídas analíticas ficam em `runs/`, ignoradas pelo Git; os relatórios históricos não foram substituídos.
+
+Foi conferida a equivalência exata entre a previsão direta da pipeline real v1 e a nova função de previsão nos 76.666 registros locais de desenvolvimento (treino/validação). Não houve novo treinamento, nova consulta cloud ou reavaliação do teste real. Essa checagem é de software, não uma nova estimativa de desempenho.
+
+Uma cópia somente dos arquivos versionados, sem snapshots/modelos reais, também passou nos 36 testes e na demonstração/previsão. Foi usado o mesmo ambiente de dependências, não uma instalação independente. [Resumo da verificação de engenharia](VERIFICACAO_ENGENHARIA.md).
 
 ## Pendências de entrega
 

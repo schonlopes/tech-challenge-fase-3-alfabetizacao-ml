@@ -10,7 +10,7 @@ Avaliação local em 19/10/2026. Esta matriz distingue implementação, evidênc
 | Imputação, transformação e encoding | Implementado | Pipeline, ColumnTransformer, mediana, indicadores de ausência, log, scaling e One-Hot |
 | Evitar vazamento | Implementado com limitações históricas documentadas | Allowlist, grupos por município, datas, ausência/proficiência excluídas dos atributos, hash e testes |
 | Treinamento, otimização e validação | Implementado | Dummy/histórico/logística/floresta, busca com GroupKFold, validação e teste v1, comparação v2 sem novo teste |
-| Replicabilidade e generalização | Demonstrado no escopo territorial | Dependências fixadas, sementes, scripts, manifests e 25 testes; generalização temporal individual não demonstrada |
+| Replicabilidade e generalização | Demonstrado no escopo territorial | Dependências fixadas, sementes, demo sem nuvem, escores com artefato salvo, execuções isoladas e 36 testes; generalização temporal individual não demonstrada |
 | Interpretabilidade | Implementado | Permutação e SHAP global com conferência de aditividade; não causal |
 | Fatores associados e territórios de risco | Implementado como apoio analítico | Importâncias, recortes por UF, lacunas oficiais de metas e relatórios |
 | Regiões/municípios com padrões semelhantes | Implementado | K-Means por município, silhouette, estabilidade entre sementes, PCA e perfis |
@@ -18,8 +18,8 @@ Avaliação local em 19/10/2026. Esta matriz distingue implementação, evidênc
 | Metas nacionais/estaduais/municipais | Implementado | Anos e redes separados; normalização dos códigos; não produzir Brasil por média simples |
 | Enriquecimento externo | Implementado | IPEA 2010, PIB 2021 e população 2022, com proveniência e limites de atualização |
 | Estrutura, README, código e documentação | Implementado localmente | Pastas exigidas, scripts reproduzíveis e relatórios; a proposta aceita scripts ou notebooks |
-| Histórico e branches Git | Implementado localmente | Commits reais e três branches; `GIT_WORKFLOW.md` |
-| Repositório remoto e PRs | Pendente | Planejadas três PRs em sequência; ainda não publicadas |
+| Histórico e branches Git | Implementado localmente | Commits reais e quatro branches; `GIT_WORKFLOW.md` |
+| Repositório remoto e PRs | Pendente | Planejadas quatro PRs em sequência; ainda não publicadas |
 | Evidência visual do GCP (feedback da Fase 2) | Adicionada | Cinco prints reais em `reports/evidence/GCP_SCREENSHOTS.md` |
 | Vídeo executivo até 5 minutos | Pendente | Preparar apresentação/roteiro e gravar; não foi entregue nesta etapa |
 

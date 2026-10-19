@@ -1,0 +1,36 @@
+{
+  "municipalities_with_2024_rows": 5448,
+  "with_observed_2024_and_target": 5232,
+  "below_2024_target": 2444,
+  "with_2030_target": 5352,
+  "profiled_municipalities": 5565,
+  "excluded_profiles": 6,
+  "chosen_k": 2,
+  "silhouette": 0.37472579061467776,
+  "stability_ari": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "pca_explained_variance": [
+    0.5727801201999946,
+    0.1572848826207119
+  ],
+  "social_reference": 2010,
+  "economic_reference": 2021,
+  "population_reference": 2022,
+  "scenario_base_year": 2024,
+  "forecasts_statistically_validated": false,
+  "outcomes_or_targets_in_cluster_features": false,
+  "cluster_features": [
+    "idhm_renda",
+    "indice_gini",
+    "ivs_renda_trabalho",
+    "proporcao_vulneravel",
+    "proporcao_sem_agua_esgoto",
+    "proporcao_responsavel_fundamental_incompleto",
+    "log_populacao_2022",
+    "fracao_va_administracao",
+    "fracao_va_industria"
+  ]
+}

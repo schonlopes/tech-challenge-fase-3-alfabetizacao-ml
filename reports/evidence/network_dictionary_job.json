@@ -1,0 +1,22 @@
+{
+  "job_id": "fase3_ec7c5a65d96f439a8de87f6710bd5208",
+  "project": "tech-challenge-fase-2-506814",
+  "location": "US",
+  "captured_at_utc": "2026-10-19T14:49:31.053044+00:00",
+  "query_sha256": "3c6b242448c4a5c0a92f36b04ff96d8c5a6108108bb1e707ce5ab2bed1d55530",
+  "maximum_bytes_billed": 1000000000,
+  "total_bytes_processed": "1174",
+  "total_bytes_billed": "10485760",
+  "cache_hit": false,
+  "status": {
+    "state": "DONE"
+  },
+  "referenced_tables": [
+    {
+      "projectId": "basedosdados",
+      "datasetId": "br_inep_avaliacao_alfabetizacao",
+      "tableId": "dicionario"
+    }
+  ],
+  "returned_rows": 18
+}

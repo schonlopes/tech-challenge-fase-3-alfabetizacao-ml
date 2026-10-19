@@ -1,0 +1,32 @@
+{
+  "job_id": "fase3_5713ef20bd874d118a8fe4bade40bc08",
+  "project": "tech-challenge-fase-2-506814",
+  "location": "US",
+  "captured_at_utc": "2026-10-19T14:47:46.743140+00:00",
+  "query_sha256": "ef07b1342b36dc09e4d01b093c6b510acca7bda70b04be45c525499d944120c4",
+  "maximum_bytes_billed": 1000000000,
+  "total_bytes_processed": "7099",
+  "total_bytes_billed": "31457280",
+  "cache_hit": false,
+  "status": {
+    "state": "DONE"
+  },
+  "referenced_tables": [
+    {
+      "projectId": "tech-challenge-fase-2-506814",
+      "datasetId": "alfabetizacao_silver",
+      "tableId": "meta_alfabetizacao_brasil"
+    },
+    {
+      "projectId": "tech-challenge-fase-2-506814",
+      "datasetId": "alfabetizacao_gold",
+      "tableId": "resumo_uf"
+    },
+    {
+      "projectId": "tech-challenge-fase-2-506814",
+      "datasetId": "alfabetizacao_silver",
+      "tableId": "meta_alfabetizacao_uf"
+    }
+  ],
+  "returned_rows": 148
+}

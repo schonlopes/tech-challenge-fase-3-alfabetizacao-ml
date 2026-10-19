@@ -1,0 +1,17 @@
+{
+  "socioeconomic": {
+    "rows": 5571,
+    "snapshot": "data\\raw\\socioeconomic.parquet",
+    "sha256": "478d58f7856b8714a32186326f13c217d38ca2464de685761999828cd9cb0edf"
+  },
+  "municipal_gold": {
+    "rows": 23995,
+    "snapshot": "data\\raw\\municipal_gold.parquet",
+    "sha256": "8c60fabc53b1e81ae38cca24ed3c7bb0964abd974bd8ee58cfa10d946a647d73"
+  },
+  "national_state_targets": {
+    "rows": 148,
+    "snapshot": "data\\raw\\national_state_targets.parquet",
+    "sha256": "4dae30e33e2062524a94ef453a12ef597943585e41c5034bbeaf0eb2562ee99c"
+  }
+}

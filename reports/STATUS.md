@@ -1,20 +1,24 @@
-# Estado da primeira versão - 19/10/2026
+# Estado do projeto - 19/10/2026
 
 Extração autorizada e concluída: 92.389 registros válidos de alunos de 2024, distribuídos por 5.193 municípios. O snapshot está somente local, ignorado pelo Git. A amostra integra Silver individual, Gold municipal de 2023 e população IBGE de 2022. Não houve criação ou alteração de tabelas cloud nesta etapa.
 
-O experimento real terminou com a seleção da regressão logística na validação. Resultados e limitações em `v1/INTERPRETACAO.md`. A versão não está pronta para entrega final: enriquecimento socioeconômico, outras respostas de negócio, prints reais, apresentação e vídeo continuam pendentes.
+O experimento inicial selecionou regressão logística. A segunda versão testou contexto socioeconômico, mas não superou o modelo anterior na validação. Seus municípios de teste foram excluídos do novo desenvolvimento. Há SHAP global, dois perfis territoriais, análise de metas e cenários com limites explícitos. Relatórios em `v1/`, `v2/` e `territorial/`.
 
-Verificação: **14 testes aprovados**, incluindo contrato, fontes, datas, integridade do snapshot, grupos sem sobreposição, preparação sem ajuste fora do treino, permutação de atributo constante e execução integrada com fixture artificial. Os testes artificiais verificam o software; as métricas em `v1/` vêm exclusivamente do experimento real.
+Verificação: **25 testes aprovados**, incluindo contratos, integridade, grupos sem sobreposição, preparação sem vazamento, enriquecimento, metas ausentes, cenários, backtest e agregação de SHAP. Os testes artificiais verificam o software; os relatórios de resultados usam dados reais e distinguem validação e teste.
 
 SQL, metadados reduzidos de jobs e hash do snapshot estão em `evidence/`. O experimento verifica o hash antes do treinamento. Após o bloqueio inicial, houve autorização específica do usuário para a extração. Uma falha de codificação do Windows foi corrigida recuperando o resultado do mesmo job, sem repetir a consulta de extração.
 
-## Prints reais: pendentes
+## Prints reais: concluídos
 
-A tentativa de captura via navegador foi interrompida porque o controle da interface não conseguiu determinar a URL com segurança. Nenhum print de console foi obtido. Os JSONs são evidência técnica e não substituem as capturas solicitadas pelo professor. Não há imagem simulada apresentada como print real.
+A primeira tentativa foi interrompida por limitação do controle da interface. Nesta etapa, o acesso pelo navegador à conta correta funcionou: cinco prints reais foram salvos e catalogados em `evidence/GCP_SCREENSHOTS.md`. Mostram tabela, particionamento e execução concluída de consulta. O treinamento de ML foi local. Uma captura adicional com dados da conta permanece privada e ignorada pelo Git.
 
 ## Versionamento
 
-Branches locais de implementação e experimento criadas. O plano de publicação e integração por PR está em `../docs/GIT_WORKFLOW.md`. Nenhum push, PR remoto ou integração à main foi realizado nesta etapa.
+Três branches locais de desenvolvimento criadas. O plano de publicação e integração por PR está em `../docs/GIT_WORKFLOW.md`. Nenhum push, PR remoto ou integração à main foi realizado nesta etapa.
+
+## Pendências de entrega
+
+Revisão final, apresentação e roteiro executivo, gravação de vídeo de até cinco minutos e publicação do GitHub por PRs. A matriz de critérios está em `../docs/atendimento_requisitos.md`.
 
 ## Extração realizada
 

@@ -1,0 +1,23 @@
+{
+  "rows": 76666,
+  "municipalities": 4160,
+  "sha256": "f6edab9c6915fd95922f869eb897b4ddc42244f22777c7bc243a49d245d78935",
+  "v1_test_municipalities_excluded": true,
+  "features": [
+    "taxa_municipal_anterior",
+    "log_populacao_anterior",
+    "idhm_renda",
+    "indice_gini",
+    "ivs_renda_trabalho",
+    "proporcao_vulneravel",
+    "proporcao_sem_agua_esgoto",
+    "proporcao_responsavel_fundamental_incompleto",
+    "log_pib_2021",
+    "fracao_va_administracao",
+    "fracao_va_industria",
+    "rede",
+    "serie",
+    "sigla_uf",
+    "regiao"
+  ]
+}

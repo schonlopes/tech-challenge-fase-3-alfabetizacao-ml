@@ -77,7 +77,8 @@ def test_runs_refuse_reuse_and_record_output_integrity(tmp_path):
     finish_run(directory)
     manifest = json.loads((directory/'run.json').read_text())
     assert manifest['status']=='completed'
-    assert manifest['git_commit']
+    # An exported source archive can be reproduced without a .git directory.
+    assert manifest['git_commit'] is None or len(manifest['git_commit'])==40
     assert manifest['source_sha256']['src/predict.py']==sha256(ROOT/'src/predict.py')
     assert manifest['outputs_sha256']['reports/result.json']==sha256(directory/'reports/result.json')
     with pytest.raises(FileExistsError): create_run(ROOT,'fixture',directory)

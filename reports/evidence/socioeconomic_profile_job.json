@@ -1,0 +1,22 @@
+{
+  "job_id": "fase3_abab2a4adad54851abc46b621905d13e",
+  "project": "tech-challenge-fase-2-506814",
+  "location": "US",
+  "captured_at_utc": "2026-10-19T14:44:52.546204+00:00",
+  "query_sha256": "f4efb59429af9250fafed3e8588fe4759ff2da1a27137910d56f5a897c6f672c",
+  "maximum_bytes_billed": 1000000000,
+  "total_bytes_processed": "11984234",
+  "total_bytes_billed": "12582912",
+  "cache_hit": false,
+  "status": {
+    "state": "DONE"
+  },
+  "referenced_tables": [
+    {
+      "projectId": "basedosdados",
+      "datasetId": "br_ipea_avs",
+      "tableId": "municipio"
+    }
+  ],
+  "returned_rows": 100
+}

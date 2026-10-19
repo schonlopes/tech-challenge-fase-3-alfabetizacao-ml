@@ -1,0 +1,5 @@
+# Office and PDF files must remain byte-identical across Windows/Linux checkouts.
+*.pdf binary
+*.pptx binary
+*.png binary
+*.jpg binary

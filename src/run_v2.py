@@ -11,7 +11,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GroupKFold, RandomizedSearchCV
 from sklearn.pipeline import Pipeline
 from src.modeling.pipelines import preprocessing, HistoricalRateBaseline
-from src.preprocessing.enrichment import development_data, read_territorial, ENRICHED_NUMERIC, ENRICHED_FEATURES
+from src.preprocessing.enrichment import development_data, read_territorial, numeric_social, ENRICHED_NUMERIC, ENRICHED_FEATURES
 from src.preprocessing.dataset import FEATURES
 from src.evaluation.interpretation import validation_importance
 from src.evaluation.metrics import evaluate
@@ -37,6 +37,11 @@ def main():
     images = ROOT / 'images/v2'
     for path in [reports, images, ROOT/'models', ROOT/'data/processed']:
         path.mkdir(parents=True, exist_ok=True)
+    audited_context = numeric_social(socioeconomic)
+    bad_ratio = audited_context[['fracao_va_administracao_indisponivel','fracao_va_industria_indisponivel']].any(axis=1)
+    audited_context.loc[bad_ratio,['id_municipio','nome_municipio',
+        'fracao_va_administracao_original','fracao_va_industria_original']].to_csv(
+        reports/'economic_composition_unavailable.csv',index=False)
     local = ROOT / 'data/processed/development_v2.parquet'
     data.to_parquet(local, index=False)
     (reports/'development_manifest.json').write_text(json.dumps({

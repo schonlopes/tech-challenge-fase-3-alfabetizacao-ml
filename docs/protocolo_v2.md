@@ -31,6 +31,10 @@ Usar indicadores oficiais Gold para comparar resultados com metas, separando red
 
 Registrar faltantes, municípios sem meta, anos de referência e limites. As metas são descritivas/estratégicas; não entram como atributos no modelo de alunos.
 
+Antes da análise adicional: avaliar uma referência temporal fixa de persistência (resultado municipal de 2023 como previsão de 2024), sem escolher parâmetros ou municípios pelo desempenho. Calcular MAE/RMSE em pontos percentuais e classificação de ficar abaixo da meta de 2024. Essa checagem retrospectiva de um único período não valida extrapolações para 2030 e não garante reprodução das versões disponíveis à época.
+
+Uma observação econômica apresentou razões setoriais fora do intervalo interpretável de 0 a 1. Preservar o valor original para auditoria e marcar os dois atributos derivados como indisponíveis, sem truncá-los a extremos; a imputação continua dentro do pipeline. Não excluir o município ou imputar usando o alvo.
+
 ## Evidências e Git
 
 Branch própria `feat/socioeconomic-territorial-analysis`. Preservar as versões e relatórios v1. Publicar futuramente por PR após as branches anteriores, conforme o encadeamento real de dependências. Registrar consultas, hashes, testes e limitações. Prints reais ainda serão necessários quando o controle seguro da interface estiver disponível.

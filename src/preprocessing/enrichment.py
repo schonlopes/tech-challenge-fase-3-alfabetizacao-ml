@@ -37,9 +37,17 @@ def numeric_social(frame: pd.DataFrame) -> pd.DataFrame:
         fields += ['populacao_2022']
     for name in fields:
         result[name] = pd.to_numeric(result[name], errors='raise')
-    for name in ['idhm_renda','indice_gini','ivs_renda_trabalho','fracao_va_administracao','fracao_va_industria']:
+    for name in ['idhm_renda','indice_gini','ivs_renda_trabalho']:
         if not result[name].dropna().between(0,1).all():
             raise ValueError(f'Índice ou fração fora do intervalo: {name}')
+    # Sector/total accounting ratios may be outside [0,1]. They are not suitable
+    # as the intended nonnegative composition features: preserve raw values and
+    # mark those derived features unavailable, rather than clipping their values.
+    for name in ['fracao_va_administracao','fracao_va_industria']:
+        result[name+'_original'] = result[name]
+        invalid = result[name].notna() & ~result[name].between(0,1)
+        result[name+'_indisponivel'] = invalid
+        result[name] = result[name].mask(invalid)
     for name in SOCIAL[3:]:
         if not result[name].dropna().between(0,100).all():
             raise ValueError(f'Proporção inválida: {name}')

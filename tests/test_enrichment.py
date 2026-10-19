@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 from src.preprocessing.enrichment import numeric_social, development_data, read_territorial
 from src.preprocessing.dataset import split_for_municipality
-from src.evaluation.territorial import scenarios, check_official_municipal
+from src.evaluation.territorial import scenarios, check_official_municipal, persistence_backtest
 from test_experiment import fixture_data
 
 
@@ -28,6 +28,17 @@ def test_context_rejects_unexpected_reference_year():
     data = context(); data.loc[0,'ano_social']=2024
     with pytest.raises(ValueError,match='Ano'):
         numeric_social(data)
+
+
+def test_out_of_range_accounting_ratios_remain_auditable_and_are_not_clipped():
+    data = context()
+    data.loc[0,'fracao_va_administracao']=-0.25
+    data.loc[0,'fracao_va_industria']=2.1
+    cleaned = numeric_social(data)
+    assert pd.isna(cleaned.loc[0,'fracao_va_administracao'])
+    assert pd.isna(cleaned.loc[0,'fracao_va_industria'])
+    assert cleaned.loc[0,'fracao_va_industria_original']==2.1
+    assert cleaned.loc[0,'fracao_va_industria_indisponivel']
 
 
 def test_v2_development_excludes_every_v1_test_municipality():
@@ -75,3 +86,12 @@ def test_network_join_without_matching_targets_fails():
 def test_duplicate_gold_keys_fail_before_aggregation():
     with pytest.raises(ValueError,match='duplicada'):
         scenarios(pd.concat([gold(),gold().iloc[:1]]))
+
+
+def test_persistence_is_fixed_and_excludes_missing_targets():
+    result = persistence_backtest(scenarios(gold()))
+    assert result['municipalities']==1
+    assert result['mae_pp']==10
+    assert result['rmse_pp']==10
+    assert result['confusion_matrix']==[[0,1],[0,0]]
+    assert result['does_not_validate_2030_scenarios']

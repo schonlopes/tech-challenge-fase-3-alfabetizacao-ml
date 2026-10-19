@@ -1,6 +1,7 @@
 """Municipal scenarios: descriptive aggregates, never individual ML targets or forecasts."""
 import numpy as np
 import pandas as pd
+from sklearn.metrics import confusion_matrix, precision_score, recall_score
 
 
 def check_official_municipal(frame):
@@ -39,3 +40,20 @@ def scenarios(gold):
         current[f'abaixo_meta_persistencia_{year}'] = np.where(valid,
             (current.resultado_2024 < current[f'meta_{year}']).astype(float),np.nan)
     return current
+
+
+def persistence_backtest(scenario_frame):
+    usable = scenario_frame.dropna(subset=['resultado_2023','resultado_2024','meta_2024'])
+    if usable.empty:
+        raise ValueError('Sem pares completos para checagem temporal de persistência.')
+    error = usable.resultado_2024-usable.resultado_2023
+    observed = usable.resultado_2024 < usable.meta_2024
+    predicted = usable.resultado_2023 < usable.meta_2024
+    return {'method':'persistence: 2023 result as 2024 estimate',
+        'evaluation':'single retrospective transition; current snapshots, not point-in-time vintage',
+        'municipalities':len(usable),'mae_pp':float(error.abs().mean()),
+        'rmse_pp':float(np.sqrt(np.mean(error**2))),
+        'below_target_precision':float(precision_score(observed,predicted,zero_division=0)),
+        'below_target_recall':float(recall_score(observed,predicted,zero_division=0)),
+        'confusion_matrix':confusion_matrix(observed,predicted,labels=[False,True]).tolist(),
+        'does_not_validate_2030_scenarios':True}

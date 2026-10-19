@@ -11,7 +11,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.metrics import adjusted_rand_score, silhouette_score
 from sklearn.preprocessing import StandardScaler
 from src.preprocessing.enrichment import SOCIAL, numeric_social, read_territorial
-from src.evaluation.territorial import scenarios
+from src.evaluation.territorial import scenarios, persistence_backtest
 from src.visualization.figures import plt, save
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,6 +26,7 @@ def main():
     goals = read_territorial(ROOT,'national_state_targets')
     current = scenarios(gold)
     current.to_csv(reports/'municipal_scenarios.csv',index=False)
+    (reports/'persistence_backtest.json').write_text(json.dumps(persistence_backtest(current),indent=2),encoding='utf-8')
     key = ['abrangencia','ano_resultado','sigla_uf','rede']
     if goals.duplicated(key).any():
         raise ValueError('Resultados nacionais/estaduais duplicados.')

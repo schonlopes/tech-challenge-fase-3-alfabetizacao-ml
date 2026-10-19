@@ -50,11 +50,15 @@ def test_end_to_end_outputs_with_artificial_fixture(tmp_path, monkeypatch):
     snapshot = tmp_path / 'fixture.parquet'
     fixture_data().to_parquet(snapshot, index=False)
     monkeypatch.setattr(run, 'ROOT', tmp_path)
-    monkeypatch.setattr(sys, 'argv', ['run', '--data', str(snapshot), '--search-iterations', '1'])
+    output = tmp_path/'isolated-run'
+    monkeypatch.setattr(sys, 'argv', ['run', '--data', str(snapshot), '--search-iterations', '1',
+                                    '--output-dir',str(output)])
     run.main()
-    result = json.loads((tmp_path / 'reports/v1/experiment.json').read_text())
+    result = json.loads((output / 'reports/experiment.json').read_text())
     assert result['positive_class'] == 'nao_alfabetizado'
     assert result['test']['rows'] > 0
     assert result['winner'] in {'dummy','historical_rate','logistic','random_forest'}
-    assert len(list((tmp_path / 'images/v1').glob('*.png'))) == 8
-    assert (tmp_path / 'models/risk_v1.joblib').exists()
+    assert len(list((output / 'images').glob('*.png'))) == 8
+    assert (output / 'models/risk_v1.joblib').exists()
+    assert json.loads((output/'run.json').read_text())['status']=='completed'
+    assert not (tmp_path/'reports/v1').exists()

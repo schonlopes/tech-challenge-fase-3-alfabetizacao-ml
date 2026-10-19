@@ -1,5 +1,6 @@
 """Municipal profiles and explicit scenarios from public aggregates, not individual predictions."""
 import json
+import argparse
 from pathlib import Path
 from itertools import combinations
 import joblib
@@ -13,17 +14,23 @@ from sklearn.preprocessing import StandardScaler
 from src.preprocessing.enrichment import SOCIAL, numeric_social, read_territorial
 from src.evaluation.territorial import scenarios, persistence_backtest
 from src.visualization.figures import plt, save
+from src.experiments import create_run, finish_run
 
 ROOT = Path(__file__).resolve().parents[1]
 CLUSTER_FEATURES = SOCIAL + ['log_populacao_2022','fracao_va_administracao','fracao_va_industria']
 
 
 def main():
-    reports, images = ROOT/'reports/territorial', ROOT/'images/territorial'
-    reports.mkdir(parents=True,exist_ok=True); images.mkdir(parents=True,exist_ok=True)
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-dir',type=Path)
+    args = parser.parse_args()
     social = numeric_social(read_territorial(ROOT,'socioeconomic'))
     gold = read_territorial(ROOT,'municipal_gold')
     goals = read_territorial(ROOT,'national_state_targets')
+    output = create_run(ROOT,'territorial',args.output_dir,
+        inputs={'source_manifest':ROOT/'reports/evidence/territorial_manifest.json'},
+        parameters={'seed':42,'evaluation':'descriptive_profiles_and_scenarios'})
+    reports, images = output/'reports', output/'images'
     current = scenarios(gold)
     current.to_csv(reports/'municipal_scenarios.csv',index=False)
     (reports/'persistence_backtest.json').write_text(json.dumps(persistence_backtest(current),indent=2),encoding='utf-8')
@@ -115,7 +122,7 @@ def main():
     ax.legend()
     save(fig,images/'national_results.png')
     joblib.dump({'imputer':imputer,'scaler':scaler,'model':model,'pca':projection,
-        'label_mapping':mapping,'features':CLUSTER_FEATURES},ROOT/'models/municipal_profiles.joblib')
+        'label_mapping':mapping,'features':CLUSTER_FEATURES},output/'models/municipal_profiles.joblib')
     known = current.resultado_2024.notna() & current.meta_2024.notna()
     result = {'municipalities_with_2024_rows':len(current),
         'with_observed_2024_and_target':int(known.sum()),
@@ -128,6 +135,8 @@ def main():
         'scenario_base_year':2024,'forecasts_statistically_validated':False,
         'outcomes_or_targets_in_cluster_features':False,'cluster_features':CLUSTER_FEATURES}
     (reports/'summary.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
+    finish_run(output)
+    print(f'Análise territorial preservada em: {output}')
     print(json.dumps(result,ensure_ascii=False,indent=2))
 
 

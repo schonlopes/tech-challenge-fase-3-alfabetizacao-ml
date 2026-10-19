@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     files = subprocess.run(['git','ls-files','-z'],cwd=ROOT,capture_output=True,check=True).stdout.decode('utf-8').split('\0')
     files = [name for name in files if name]
-    forbidden = [name for name in files if name.startswith(('.venv/','models/','reports/private/'))
+    forbidden = [name for name in files if name.startswith(('.venv/','models/','reports/private/','runs/'))
         or (name.startswith(('data/raw/','data/processed/')) and not name.endswith('/.gitkeep'))]
     if forbidden:
         raise ValueError('Arquivos privados no índice: '+str(forbidden))

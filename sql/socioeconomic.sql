@@ -13,8 +13,10 @@ WITH social AS (
   FROM `basedosdados.br_ibge_pib.municipio` WHERE ano = 2021
 )
 SELECT d.id_municipio, d.nome_municipio, d.sigla_uf, d.regiao,
-  s.* EXCEPT(id_municipio), e.* EXCEPT(id_municipio)
+  s.* EXCEPT(id_municipio), e.* EXCEPT(id_municipio), p.populacao AS populacao_2022
 FROM `__PROJECT__.alfabetizacao_silver.dim_municipio` d
 LEFT JOIN social s USING(id_municipio)
 LEFT JOIN economic e USING(id_municipio)
+LEFT JOIN `basedosdados.br_ibge_populacao.municipio` p
+  ON d.id_municipio=p.id_municipio AND p.ano=2022
 ORDER BY id_municipio

@@ -4,3 +4,4 @@ scikit-learn>=1.6,<2
 matplotlib>=3.9,<4
 pyarrow>=18,<27
 pytest>=8,<10
+shap>=0.47,<1

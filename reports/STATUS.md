@@ -14,7 +14,7 @@ A primeira tentativa foi interrompida por limitação do controle da interface. 
 
 ## Versionamento
 
-Quatro branches locais de desenvolvimento criadas. A quarta, `feat/reproducible-inference`, contém as melhorias de engenharia e a política explícita do modelo. O plano de publicação e integração por PR está em `../docs/GIT_WORKFLOW.md`. Nenhum push, PR remoto ou integração à main foi realizado nesta etapa.
+Cinco branches locais de desenvolvimento criadas. A quarta, `feat/reproducible-inference`, contém as melhorias de engenharia e a política explícita do modelo. A quinta, `feat/executive-presentation`, contém apresentação e roteiro. O plano de publicação e integração por PR está em `../docs/GIT_WORKFLOW.md`. Nenhum push, PR remoto ou integração à main foi realizado nesta etapa.
 
 ## Melhorias de engenharia
 
@@ -26,7 +26,7 @@ Uma cópia somente dos arquivos versionados, sem snapshots/modelos reais, també
 
 ## Pendências de entrega
 
-Revisão final, apresentação e roteiro executivo, gravação de vídeo de até cinco minutos e publicação do GitHub por PRs. A matriz de critérios está em `../docs/atendimento_requisitos.md`.
+Slides e roteiro preparados em `../output/` e `../docs/roteiro_video.md`. Restam ensaio, gravação de vídeo de até cinco minutos, conferência final dos links e publicação do GitHub por PRs. A matriz de critérios está em `../docs/atendimento_requisitos.md`.
 
 ## Extração realizada
 

@@ -18,10 +18,10 @@ Avaliação local em 19/10/2026. Esta matriz distingue implementação, evidênc
 | Metas nacionais/estaduais/municipais | Implementado | Anos e redes separados; normalização dos códigos; não produzir Brasil por média simples |
 | Enriquecimento externo | Implementado | IPEA 2010, PIB 2021 e população 2022, com proveniência e limites de atualização |
 | Estrutura, README, código e documentação | Implementado localmente | Pastas exigidas, scripts reproduzíveis e relatórios; a proposta aceita scripts ou notebooks |
-| Histórico e branches Git | Implementado localmente | Commits reais e quatro branches; `GIT_WORKFLOW.md` |
-| Repositório remoto e PRs | Pendente | Planejadas quatro PRs em sequência; ainda não publicadas |
+| Histórico e branches Git | Implementado localmente | Commits reais e cinco branches; `GIT_WORKFLOW.md` |
+| Repositório remoto e PRs | Pendente | Planejadas cinco PRs em sequência; ainda não publicadas |
 | Evidência visual do GCP (feedback da Fase 2) | Adicionada | Cinco prints reais em `reports/evidence/GCP_SCREENSHOTS.md` |
-| Vídeo executivo até 5 minutos | Pendente | Preparar apresentação/roteiro e gravar; não foi entregue nesta etapa |
+| Vídeo executivo até 5 minutos | Slides/roteiro preparados; gravação pendente | Oito slides, roteiro de 584 palavras e meta estimada de 4min45s; ensaio/gravação ainda necessários |
 
 ## Hipóteses e decisões decorrentes
 

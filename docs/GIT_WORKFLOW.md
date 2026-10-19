@@ -11,8 +11,9 @@ O desenvolvimento desta Fase 3 tem um repositório Git próprio. Os commits são
 | `feat/real-data-experiment` | Proveniência dos dados, resultados reais, gráficos e interpretação do primeiro experimento | PR 2 para `main`, depois da integração da PR 1 |
 | `feat/socioeconomic-territorial-analysis` | Enriquecimento, compatibilidade de redes, perfis, metas, SHAP e prints reais | PR 3 para `main`, depois da integração da PR 2 |
 | `feat/reproducible-inference` | Política de decisão explícita, demo sem nuvem, previsão e execuções isoladas | PR 4 para `main`, depois da integração da PR 3 |
+| `feat/executive-presentation` | Slides executivos, gráficos, evidência GCP e roteiro de até cinco minutos | PR 5 para `main`, depois da integração da PR 4 |
 
-A segunda branch foi criada a partir da primeira, a terceira a partir da segunda, e a quarta a partir da terceira. As dependências serão integradas nessa ordem. Os commits de implementação permanecerão acessíveis no histórico. Novos enriquecimentos e análises devem utilizar outras branches a partir da base adequada, com PRs que expliquem as respectivas decisões.
+A segunda branch foi criada a partir da primeira, a terceira a partir da segunda, a quarta a partir da terceira e a quinta a partir da quarta. As dependências serão integradas nessa ordem. Os commits de implementação permanecerão acessíveis no histórico. Novos enriquecimentos e análises devem utilizar outras branches a partir da base adequada, com PRs que expliquem as respectivas decisões.
 
 ## PRs futuras
 
@@ -22,7 +23,8 @@ A segunda branch foi criada a partir da primeira, a terceira a partir da segunda
 4. Publicar a branch do experimento, conferir o diff contra a `main` atualizada e abrir a segunda PR com evidências e resultados reais.
 5. Publicar a terceira branch e abrir a PR de enriquecimento e análise territorial após integrar a segunda.
 6. Publicar a quarta branch e abrir a PR de reprodução/previsão após integrar a terceira.
-7. Para cada nova mudança, registrar revisão e justificativas pertinentes. Não fabricar comentários, aprovações, colaboração ou cronologia.
+7. Publicar a quinta branch e abrir a PR dos materiais executivos após integrar a quarta. Conferir a versão dos slides e a gravação antes da entrega.
+8. Para cada nova mudança, registrar revisão e justificativas pertinentes. Não fabricar comentários, aprovações, colaboração ou cronologia.
 
 As PRs acima são **planejadas**, não foram criadas. Nenhum envio ao GitHub foi realizado nesta etapa.
 

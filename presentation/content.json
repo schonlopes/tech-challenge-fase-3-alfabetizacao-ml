@@ -1,0 +1,63 @@
+{
+  "title": "Predição e inteligência analítica para alfabetização",
+  "author": "Willian Schön Lopes",
+  "target_seconds": 285,
+  "slides": [
+    {
+      "title": "Predição e inteligência analítica para alfabetização",
+      "interval": "00:00 a 00:18",
+      "seconds": 18,
+      "speech": "Olá, sou Willian Schön Lopes. Neste projeto, utilizei os dados de alfabetização para estimar risco educacional e analisar diferenças entre municípios. A proposta é apoiar gestores na organização do acompanhamento pedagógico e no planejamento de políticas públicas, com evidências e limites explícitos.",
+      "sources": ["README.md", "docs/atendimento_requisitos.md"]
+    },
+    {
+      "title": "Base individual com contexto histórico",
+      "interval": "00:18 a 00:56",
+      "seconds": 38,
+      "speech": "O desafio principal é classificar se um aluno foi considerado alfabetizado ou não. Como a Gold da fase anterior era municipal, construí uma extensão local de modelagem, integrando os alunos válidos da Silver ao contexto histórico da Gold. A amostra contém cerca de 92 mil alunos de 2024, em mais de cinco mil municípios. Utilizei o indicador municipal de 2023 e a população de 2022. Excluí ausentes e registros sem proficiência válida. A proficiência individual não entra como variável preditora.",
+      "sources": ["reports/v1/split_summary.csv", "sql/extract_training.sql", "README.md"]
+    },
+    {
+      "title": "Validação com municípios separados",
+      "interval": "00:56 a 01:38",
+      "seconds": 42,
+      "speech": "A separação entre treino, validação e teste mantém cada município em um único conjunto, reduzindo o vazamento territorial. A pipeline integra imputação por mediana, transformação da população, padronização e codificação das categorias. Comparei referências simples, regressão logística e floresta aleatória. A busca de hiperparâmetros usa validação cruzada por município apenas no treino. Escolhi o modelo na validação e preservei o teste para a avaliação original. Essa separação mede generalização territorial em 2024, mas ainda não comprova previsão para anos futuros.",
+      "sources": ["src/run.py", "src/modeling/pipelines.py", "src/preprocessing/dataset.py", "reports/v1/experiment.json"]
+    },
+    {
+      "title": "Desempenho e escolha do modelo",
+      "interval": "01:38 a 02:20",
+      "seconds": 42,
+      "speech": "A regressão logística foi a referência selecionada. No teste, sua precisão média, ou average precision, foi de aproximadamente zero vírgula cinquenta e três, contra zero vírgula cinquenta e um do indicador histórico. A área sob a curva ROC foi de zero vírgula sessenta e seis. O ganho observado é modesto e não significa cinquenta e três por cento de acurácia. Depois, acrescentei contexto socioeconômico e econômico. Como não houve melhora na validação, mantive o modelo mais simples, sem reutilizar o teste para essa escolha.",
+      "sources": ["reports/v1/experiment.json", "reports/v2/experiment.json", "reports/v2/validation_comparison.csv"]
+    },
+    {
+      "title": "Risco contextual e limites da priorização",
+      "interval": "02:20 a 03:03",
+      "seconds": 43,
+      "speech": "A análise SHAP mostra que o histórico municipal tem maior influência nas previsões, seguido pela localização. Isso reforça que o modelo estima principalmente risco contextual e não explica causalidade. Também há uma limitação operacional importante: o limiar que busca alto recall sinaliza quase 96 por cento dos alunos. Portanto, não oferece uma priorização seletiva. A alternativa de sinalizar cerca de 20 por cento foi explorada somente na validação. Por isso, a ferramenta entrega escores por padrão e mantém qualquer decisão pedagógica sob responsabilidade humana.",
+      "sources": ["reports/v2/shap_global.csv", "reports/v1/experiment.json", "reports/v2/frozen_v1_logistic_capacity.csv", "docs/modelo_e_politica.md"]
+    },
+    {
+      "title": "Perfis territoriais e metas",
+      "interval": "03:03 a 03:48",
+      "seconds": 45,
+      "speech": "Na análise territorial, identifiquei dois perfis entre mais de cinco mil municípios, sem utilizar alfabetização para formar os grupos. Depois, observei médias municipais de alfabetização próximas de 67 e 58 por cento. São médias não ponderadas e associações, não efeitos causais. O contexto social utilizado é de 2010, o que limita sua atualização. Além disso, 2.444 dos 5.232 municípios com dados comparáveis ficaram abaixo da meta de 2024. Os cenários até 2030 ajudam a discutir o avanço necessário, mas não são previsões estatisticamente validadas.",
+      "sources": ["reports/territorial/profile_summary.csv", "reports/territorial/summary.json", "reports/territorial/INTERPRETACAO.md"]
+    },
+    {
+      "title": "Execução comprovada e reprodução",
+      "interval": "03:48 a 04:20",
+      "seconds": 32,
+      "speech": "Esta captura mostra uma consulta realmente concluída no BigQuery, com processamento e limite de consumo registrados. Os dados e as consultas ficam no GCP, enquanto o treinamento ocorreu localmente. O projeto conta com 36 testes aprovados, demonstração artificial sem credenciais e previsão com o modelo salvo. Cada execução preserva parâmetros, versões e hashes. O histórico de commits e as branches locais documentam a evolução, sem publicar os registros individuais dos alunos.",
+      "sources": ["images/evidence/gcp_query_processing_controls.png", "reports/evidence/GCP_SCREENSHOTS.md", "reports/VERIFICACAO_ENGENHARIA.md", "docs/GIT_WORKFLOW.md"]
+    },
+    {
+      "title": "Apoio ao planejamento educacional",
+      "interval": "04:20 a 04:45",
+      "seconds": 25,
+      "speech": "O valor estratégico está em combinar acompanhamento pedagógico com planejamento territorial e monitoramento de metas. A solução oferece uma base auditável para discutir onde aprofundar diagnósticos e como distribuir apoio. Antes do uso operacional, precisamos atualizar o contexto, avaliar uma nova coorte e pactuar critérios com os educadores. A tecnologia apoia a decisão pública, preservando a avaliação humana. Obrigado.",
+      "sources": ["README.md", "docs/modelo_e_politica.md"]
+    }
+  ]
+}

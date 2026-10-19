@@ -8,7 +8,7 @@ Antecipar risco educacional para apoiar a priorização de acompanhamento pedag�
 
 ## Estado atual
 
-**Experimentos reais e análises executados em 19/10/2026**, com 92.389 alunos de 5.193 municípios e contexto público de 5.571 municípios. A classificação inclui preparação integrada, otimização e validação por município; a análise territorial inclui perfis, metas e cenários. **36 testes passaram**, e cinco prints reais do console GCP estão documentados. Há demonstração sem nuvem, previsão com modelo salvo e execuções isoladas. O projeto ainda depende da apresentação, vídeo e publicação com PRs para concluir a entrega.
+**Experimentos reais e análises executados em 19/10/2026**, com 92.389 alunos de 5.193 municípios e contexto público de 5.571 municípios. A classificação inclui preparação integrada, otimização e validação por município; a análise territorial inclui perfis, metas e cenários. **36 testes passaram**, e cinco prints reais do console GCP estão documentados. Há demonstração sem nuvem, previsão com modelo salvo e execuções isoladas. Slides e roteiro executivo estão preparados localmente; faltam gravação do vídeo e publicação com PRs para concluir a entrega.
 
 Amostras sintéticas da Fase 2 e eventos simulados de Pub/Sub não serão utilizados para avaliar os modelos. Fixtures artificiais existem somente nos testes de software e não constituem evidência de desempenho educacional.
 
@@ -136,7 +136,13 @@ A junção de metas foi corrigida localmente: `Municipal` corresponde ao código
 
 Esta versão é retrospectiva em 2024, com teste em municípios separados. Não demonstra generalização individual para anos futuros ou cumprimento futuro de metas. A primeira divulgação do indicador de 2023 ocorreu em maio de 2024, mas o snapshot atual pode conter revisões; uma reprodução estritamente histórica exigiria versões disponíveis à época. As métricas individuais são amostrais e não ponderadas, diferentes dos indicadores oficiais. O contexto social de 2010 é antigo, e a escassez de atributos individuais limita a personalização.
 
-Pendentes para entrega: revisão final, apresentação e roteiro de até cinco minutos, gravação do vídeo e publicação por PRs. Para evolução científica: novos dados independentes, atributos individuais/escolares anteriores ao desfecho e validação temporal mais ampla. [Checklist de atendimento](docs/atendimento_requisitos.md).
+Pendentes para entrega: ensaio/gravação do vídeo, conferência final dos links e publicação por PRs. Para evolução científica: novos dados independentes, atributos individuais/escolares anteriores ao desfecho e validação temporal mais ampla. [Checklist de atendimento](docs/atendimento_requisitos.md).
+
+## Apresentação executiva
+
+[Slides editáveis](output/presentation/Alfabetizacao_Fase3.pptx), [slides em PDF](output/pdf/Apresentacao_Alfabetizacao_Fase3.pdf) e [roteiro com fonte grande para celular](output/pdf/Roteiro_Leitura_iPhone_Fase3.pdf). São oito slides, incluindo gráficos nativos, fluxo de dados e captura real do GCP. O encerramento aparece depois das evidências.
+
+O [roteiro editável](docs/roteiro_video.md) contém 584 palavras, com meta estimada de **4min45s**. É necessário ensaiar com cronômetro: não há gravação real para comprovar esse tempo. Os slides têm a mesma fala nas notas do apresentador. A apresentação distingue teste histórico v1, exploração v2, cenários territoriais e limitações de uso operacional. Não afirma que PRs remotas já existem.
 
 ## Organização e Git
 
@@ -153,4 +159,4 @@ runs/           novas execuções isoladas e privadas (ignoradas no Git)
 docs/           protocolo e decisões
 ```
 
-O Git local registra escopo, implementação, correções, experimentos e interpretação em commits próprios. Existem quatro branches de desenvolvimento; a mais recente é `feat/reproducible-inference`, para política, demonstração, previsão e rastreabilidade. O plano das quatro PRs e a ordem de integração estão em [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md). A publicação no GitHub e as PRs serão feitas em etapa posterior; não são apresentadas como concluídas.
+O Git local registra escopo, implementação, correções, experimentos e interpretação em commits próprios. Existem cinco branches de desenvolvimento; a mais recente é `feat/executive-presentation`, para apresentação e roteiro. O plano das cinco PRs e a ordem de integração estão em [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md). A publicação no GitHub e as PRs serão feitas em etapa posterior; não são apresentadas como concluídas.

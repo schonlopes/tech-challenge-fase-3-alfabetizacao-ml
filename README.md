@@ -8,7 +8,7 @@ Antecipar risco educacional para apoiar a priorização de acompanhamento pedag�
 
 ## Estado atual
 
-Auditoria de dados reais no GCP realizada. A primeira implementação local contém extração limitada por custo, contrato, EDA, pré-processamento, otimização por validação agrupada e avaliação com teste territorial. **O experimento real ainda não foi executado**: a extração local dos microdados aguarda autorização específica após bloqueio da revisão automática de permissões. Não há métricas de desempenho a reportar.
+**Primeiro experimento real executado em 19/10/2026**, com 92.389 alunos de 5.193 municípios. Extração autorizada do GCP, pré-processamento integrado, otimização com validação agrupada e avaliação em municípios separados. Os 14 testes de software passaram. A regressão logística foi selecionada na validação; os resultados são iniciais e não representam uma solução pronta para implantação.
 
 Amostras sintéticas da Fase 2 e eventos simulados de Pub/Sub não serão utilizados para avaliar os modelos. Fixtures artificiais existem somente nos testes de software e não constituem evidência de desempenho educacional.
 
@@ -38,7 +38,7 @@ As consultas de extração são somente leitura: não criam nem substituem tabel
 
 ## Base e atributos
 
-Amostra por hash de aproximadamente 5% dos alunos elegíveis em 2024. Exclui ausentes, proficiência nula e origem simulada. O alvo é `risco=1` para não alfabetizado; a proficiência serve apenas à auditoria da coerência do rótulo. A presença não entra como atributo.
+Amostra por hash de aproximadamente 5% dos 1.851.852 alunos elegíveis em 2024: 92.389 registros. Exclui ausentes, proficiência nula e origem simulada. O alvo é `risco=1` para não alfabetizado; a proficiência serve apenas à auditoria da coerência do rótulo. A presença não entra como atributo. A auditoria não encontrou divergências entre os rótulos válidos e o corte de 743 pontos.
 
 Atributos iniciais: taxa municipal de alfabetização de 2023, log da população de 2022, rede, série, UF e região. Identificadores individuais não entram no modelo. A população é contexto demográfico; o enriquecimento socioeconômico propriamente dito ainda está pendente.
 
@@ -65,13 +65,28 @@ python -m venv .venv
 # Requer Google Cloud SDK, sessão autenticada e autorização de acesso/extração.
 .venv\Scripts\python.exe scripts/extract_gcp.py --sample-percent 5
 .venv\Scripts\python.exe -m src.run --search-iterations 4
+.venv\Scripts\python.exe scripts/analyze_validation.py
 ```
 
 É possível usar `requirements.txt` para uma instalação com versões compatíveis; `requirements-lock.txt` registra o ambiente utilizado nos testes iniciais. A extração exige acesso ao projeto `tech-challenge-fase-2-506814` e às fontes públicas referenciadas. Nenhuma credencial deve ser colocada no repositório.
 
 ## Resultados e aplicação prática
 
-Ainda pendentes de execução real. O fluxo está preparado para produzir os resultados em `reports/v1/` e oito gráficos em `images/v1/`. A análise municipal do teste publica apenas agregados com pelo menos 30 alunos amostrados, com finalidade exploratória.
+Treino: 61.503 alunos / 3.074 municípios. Validação: 15.163 / 1.086. Teste: 15.723 / 1.033. Nenhum município pertence a mais de um conjunto. A EDA de rótulos foi restrita ao treino.
+
+| Modelo ou referência | Average precision no teste | ROC-AUC no teste |
+| --- | ---: | ---: |
+| Regressão logística selecionada | 0,5250 | 0,6560 |
+| Indicador histórico municipal | 0,5086 | 0,6377 |
+| Frequência das classes no treino | 0,3889 | 0,5000 |
+
+No teste, 38,89% dos alunos avaliados pertencem à classe de risco. O intervalo de 95% por bootstrap de municípios é aproximadamente [0,5072; 0,5444] para AP e [0,6360; 0,6701] para ROC-AUC. O ganho sobre o histórico é observado nesta amostra; não foi realizado teste pareado de significância da diferença.
+
+**Limitação operacional importante:** o limiar F2 de 0,16 produz recall de 99,07%, mas precisão de 40,23% e sinaliza 95,76% dos alunos. Portanto, esse limiar é pouco seletivo e não serve, sozinho, para priorização de recursos escassos. O relatório discute alternativas exploratórias de capacidade usando somente a validação; elas não foram utilizadas para reajustar o resultado do teste.
+
+Resultados detalhados em [reports/v1/INTERPRETACAO.md](reports/v1/INTERPRETACAO.md), métricas em [reports/v1/experiment.json](reports/v1/experiment.json) e oito gráficos em `images/v1/`. A análise municipal do teste disponibiliza apenas agregados com pelo menos 30 alunos amostrados, com finalidade exploratória.
+
+O contexto municipal anterior é o atributo de maior importância por permutação. Isso indica dependência do modelo em padrões territoriais, não causalidade ou identificação completa de fatores individuais.
 
 Após validação, os escores poderão apoiar a triagem de territórios para investigação e planejamento pedagógico. O contexto municipal compartilhado por muitos alunos limita a personalização; não usar para rotular definitivamente crianças, negar atendimento ou atribuir responsabilidade individual.
 
@@ -95,4 +110,4 @@ images/         gráficos reproduzíveis
 docs/           protocolo e decisões
 ```
 
-O Git local foi iniciado com um commit de escopo/auditoria e uma branch de desenvolvimento de funcionalidades. Os commits acompanham trabalho real. A publicação no GitHub e as PRs serão feitas em etapa posterior; não são apresentadas como concluídas.
+O Git local registra o escopo, a implementação, as correções e o primeiro experimento real em commits próprios. Existem duas branches de desenvolvimento: `feat/individual-risk-baseline` e `feat/real-data-experiment`. O plano das duas PRs e a ordem de integração estão em [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md). A publicação no GitHub e as PRs serão feitas em etapa posterior; não são apresentadas como concluídas.

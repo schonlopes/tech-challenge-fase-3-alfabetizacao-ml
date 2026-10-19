@@ -1,0 +1,10 @@
+{
+  "snapshot_sha256": "153ab56038bd7664702e5ad4fac981a9dc5e8b6f08c4d418af24cda50be30ec7",
+  "rows": 92389,
+  "municipalities": 5193,
+  "sample_percent": 5,
+  "snapshot": "data\\raw\\alunos_gold_modelagem.parquet",
+  "source": "GCP real: Silver individual + Gold municipal 2023 + IBGE popula\u00e7\u00e3o 2022",
+  "gold_extension": "local; no new cloud table was created",
+  "captured_at_utc": "2026-10-19T14:13:39.079908+00:00"
+}

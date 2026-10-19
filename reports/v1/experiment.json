@@ -1,0 +1,122 @@
+{
+  "finished_at_utc": "2026-10-19T14:14:50.924423+00:00",
+  "seed": 42,
+  "snapshot_sha256": "153ab56038bd7664702e5ad4fac981a9dc5e8b6f08c4d418af24cda50be30ec7",
+  "winner": "logistic",
+  "selection": "validation average_precision; F2 threshold",
+  "test": {
+    "rows": 15723,
+    "risk_prevalence": 0.38885708834191945,
+    "threshold": 0.16,
+    "average_precision": 0.5250128869679892,
+    "roc_auc": 0.656003456101852,
+    "brier": 0.2206051921744292,
+    "precision": 0.40227136879856545,
+    "recall": 0.9906771344455348,
+    "f1": 0.5721978177695904,
+    "f2": 0.7664566092172197,
+    "alert_rate": 0.9576416714367487,
+    "confusion_matrix": [
+      [
+        609,
+        9000
+      ],
+      [
+        57,
+        6057
+      ]
+    ]
+  },
+  "dummy_test": {
+    "rows": 15723,
+    "risk_prevalence": 0.38885708834191945,
+    "threshold": 0.4,
+    "average_precision": 0.38885708834191945,
+    "roc_auc": 0.5,
+    "brier": 0.23796257216234346,
+    "precision": 0.38885708834191945,
+    "recall": 1.0,
+    "f1": 0.5599670284379723,
+    "f2": 0.7608452176510118,
+    "alert_rate": 1.0,
+    "confusion_matrix": [
+      [
+        0,
+        9609
+      ],
+      [
+        0,
+        6114
+      ]
+    ]
+  },
+  "historical_test": {
+    "rows": 15723,
+    "risk_prevalence": 0.38885708834191945,
+    "threshold": 0.08,
+    "average_precision": 0.5085724002359857,
+    "roc_auc": 0.637697038946389,
+    "brier": 0.22590883507195222,
+    "precision": 0.3973839110529758,
+    "recall": 0.9937847562970232,
+    "f1": 0.5677443468510559,
+    "f2": 0.7643536456498767,
+    "alert_rate": 0.9724607263244928,
+    "confusion_matrix": [
+      [
+        395,
+        9214
+      ],
+      [
+        38,
+        6076
+      ]
+    ]
+  },
+  "test_uncertainty": {
+    "unit": "municipality",
+    "repetitions": 100,
+    "average_precision_95": [
+      0.5072254179275615,
+      0.5444403909163178
+    ],
+    "roc_auc_95": [
+      0.6359567584337131,
+      0.6700977983215538
+    ]
+  },
+  "search": {
+    "logistic": {
+      "best_params": {
+        "model__C": 0.01
+      },
+      "cv_average_precision": 0.5382538722866883
+    },
+    "random_forest": {
+      "best_params": {
+        "model__min_samples_leaf": 300,
+        "model__max_features": "sqrt",
+        "model__max_depth": 10
+      },
+      "cv_average_precision": 0.5390074585219816
+    }
+  },
+  "features": [
+    "taxa_municipal_anterior",
+    "log_populacao_anterior",
+    "rede",
+    "serie",
+    "sigla_uf",
+    "regiao"
+  ],
+  "positive_class": "nao_alfabetizado",
+  "validation_protocol": "2024 municipality holdout; not an out-of-time test",
+  "python": "3.11.9",
+  "packages": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "pyarrow": "26.0.0"
+  }
+}

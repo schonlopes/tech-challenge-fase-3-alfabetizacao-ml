@@ -11,9 +11,9 @@ from pathlib import Path
 import joblib
 import numpy as np
 import pandas as pd
-from sklearn.inspection import permutation_importance
 from sklearn.model_selection import GroupKFold, RandomizedSearchCV
 from src.evaluation.metrics import choose_threshold, evaluate, grouped_bootstrap, subgroup_metrics
+from src.evaluation.interpretation import validation_importance
 from src.modeling.pipelines import candidates
 from src.preprocessing.dataset import FEATURES, prepare
 from src.visualization.figures import eda_figures, evaluation_figures
@@ -94,10 +94,7 @@ def main():
     historical_threshold = float(comparison.loc[comparison.model.eq('historical_rate'), 'threshold'].iloc[0])
     historical = evaluate(test.risco, fitted['historical_rate'].predict_proba(test[FEATURES])[:, 1], historical_threshold)
     uncertainty = grouped_bootstrap(test.risco, probabilities, test.id_municipio, args.seed)
-    permutation = permutation_importance(winner, X_val, y_val, scoring='average_precision',
-        n_repeats=5, random_state=args.seed, n_jobs=1, max_samples=min(5000, len(validation)))
-    importance = pd.DataFrame({'feature': FEATURES, 'importance': permutation.importances_mean,
-                               'std': permutation.importances_std})
+    importance = validation_importance(winner, X_val, y_val, args.seed)
     importance.to_csv(report / 'validation_importance.csv', index=False)
     subgroup_metrics(test, probabilities, threshold).to_csv(report / 'test_subgroups_uf.csv', index=False)
     municipality = test.assign(probability=probabilities).groupby(

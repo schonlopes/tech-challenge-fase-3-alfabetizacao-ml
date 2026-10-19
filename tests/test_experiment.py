@@ -1,8 +1,10 @@
 """Software integration only: artificial fixture, never a real-world model benchmark."""
 import json
+import hashlib
 import sys
 import numpy as np
 import pandas as pd
+import pytest
 from src import run
 from src.preprocessing.dataset import SOURCE, prepare
 
@@ -29,6 +31,19 @@ def test_group_holdout_has_no_municipal_overlap():
     prepared = prepare(fixture_data())
     assert prepared.groupby('id_municipio').split.nunique().eq(1).all()
     assert set(prepared.split) == {'train','validation','test'}
+
+
+def test_snapshot_integrity_rejects_modified_data(tmp_path):
+    path = tmp_path / 'snapshot.parquet'
+    manifest = tmp_path / 'manifest.json'
+    payload = b'fixture for integrity checking only'
+    path.write_bytes(payload)
+    digest = hashlib.sha256(payload).hexdigest()
+    manifest.write_text(json.dumps({'snapshot_sha256':digest}), encoding='utf-8')
+    assert run.verify_snapshot(path, manifest) == digest
+    path.write_bytes(payload + b' modified')
+    with pytest.raises(ValueError, match='proveniência'):
+        run.verify_snapshot(path, manifest)
 
 
 def test_end_to_end_outputs_with_artificial_fixture(tmp_path, monkeypatch):

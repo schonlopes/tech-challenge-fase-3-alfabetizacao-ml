@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -16,37 +17,58 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 
-def query(sql: str, project: str, ceiling: int, name: str) -> list[dict]:
+def decode_cli(payload: bytes) -> str:
+    try:
+        return payload.decode('utf-8-sig')
+    except UnicodeDecodeError:
+        return payload.decode('cp1252')
+
+
+def call_bq(arguments: list[str], sql: str | None = None) -> str:
+    env = dict(os.environ, PYTHONIOENCODING='utf-8')
+    result = subprocess.run(arguments, input=sql.encode('utf-8') if sql else None,
+                            capture_output=True, timeout=300, env=env)
+    if result.returncode:
+        raise RuntimeError(decode_cli(result.stderr) + decode_cli(result.stdout))
+    return decode_cli(result.stdout)
+
+
+def query(sql: str, project: str, ceiling: int, name: str, resume_job: str | None = None) -> list[dict]:
     executable = shutil.which('bq')
     if not executable:
         raise RuntimeError('Instale Google Cloud SDK e autentique o bq.')
-    job_id = 'fase3_' + uuid.uuid4().hex
+    job_id = resume_job or ('fase3_' + uuid.uuid4().hex)
+    if not re.fullmatch(r'fase3_[a-f0-9]{32}', job_id):
+        raise ValueError('Job de recuperação inválido.')
     args = [executable, '--project_id=' + project, '--location=US', '--format=json',
             'query', '--use_legacy_sql=false', '--maximum_bytes_billed=' + str(ceiling),
-            '--max_rows=200000', '--job_id=' + job_id]
-    result = subprocess.run(args, input=sql, encoding='utf-8', capture_output=True, timeout=300)
-    if result.returncode:
-        raise RuntimeError(result.stderr + result.stdout)
-    rows = json.loads(result.stdout)
+            '--max_rows=0', '--job_id=' + job_id]
+    if not resume_job:
+        call_bq(args, sql)
     evidence = ROOT / 'reports' / 'evidence'
     evidence.mkdir(parents=True, exist_ok=True)
-    metadata = subprocess.run([executable, '--project_id=' + project, '--location=US',
-                               '--format=json', 'show', '--job=true', job_id],
-                              encoding='utf-8', capture_output=True, timeout=60)
-    if metadata.returncode:
-        raise RuntimeError('Consulta concluída, mas não foi possível obter metadados: ' + metadata.stderr)
-    job = json.loads(metadata.stdout)
+    job = json.loads(call_bq([executable, '--project_id=' + project, '--location=US',
+                              '--format=json', 'show', '--job=true', job_id]))
+    query_config = job.get('configuration', {}).get('query', {})
+    if query_config.get('query', '').strip() != sql.strip():
+        raise ValueError('SQL do job não corresponde à consulta solicitada.')
+    if job.get('status', {}).get('state') != 'DONE' or job.get('status', {}).get('errorResult'):
+        raise RuntimeError('Job não concluído com sucesso.')
     stats = job.get('statistics', {}).get('query', {})
     record = {
         'job_id': job_id, 'project': project, 'location': 'US',
         'captured_at_utc': datetime.now(timezone.utc).isoformat(),
         'query_sha256': hashlib.sha256(sql.encode()).hexdigest(),
-        'maximum_bytes_billed': ceiling, 'returned_rows': len(rows),
+        'maximum_bytes_billed': int(query_config.get('maximumBytesBilled', ceiling)),
         'total_bytes_processed': stats.get('totalBytesProcessed'),
         'total_bytes_billed': stats.get('totalBytesBilled'),
         'cache_hit': stats.get('cacheHit'), 'status': job.get('status', {}),
         'referenced_tables': stats.get('referencedTables', []),
     }
+    (evidence / (name + '_job.json')).write_text(json.dumps(record, indent=2), encoding='utf-8')
+    rows = json.loads(call_bq([executable, '--project_id=' + project, '--location=US',
+                               '--format=json', 'head', '--job=true', '--max_rows=200000', job_id]))
+    record['returned_rows'] = len(rows)
     (evidence / (name + '_job.json')).write_text(json.dumps(record, indent=2), encoding='utf-8')
     if len(rows) >= 200000:
         raise RuntimeError('Limite de linhas atingido: extração pode estar truncada; reduza a amostra.')
@@ -58,6 +80,8 @@ def main():
     parser.add_argument('--project', default='tech-challenge-fase-2-506814')
     parser.add_argument('--sample-percent', type=int, default=5)
     parser.add_argument('--maximum-bytes-billed', type=int, default=2_000_000_000)
+    parser.add_argument('--resume-audit-job')
+    parser.add_argument('--resume-training-job')
     args = parser.parse_args()
     if not re.fullmatch(r'[a-z][a-z0-9-]{4,61}[a-z0-9]', args.project):
         raise ValueError('ID de projeto inválido.')
@@ -66,13 +90,13 @@ def main():
     evidence = ROOT / 'reports' / 'evidence'
     evidence.mkdir(parents=True, exist_ok=True)
     audit_sql = (ROOT / 'sql/audit_source.sql').read_text(encoding='utf-8').replace('__PROJECT__', args.project)
-    audit = query(audit_sql, args.project, args.maximum_bytes_billed, 'source_audit')
+    audit = query(audit_sql, args.project, args.maximum_bytes_billed, 'source_audit', args.resume_audit_job)
     (evidence / 'source_audit.json').write_text(json.dumps(audit, indent=2), encoding='utf-8')
     if any(int(row['divergencias_rotulo']) > 0 for row in audit):
         raise ValueError('Rótulo e proficiência divergentes: revisar antes de treinar.')
     sql = (ROOT / 'sql/extract_training.sql').read_text(encoding='utf-8')
     sql = sql.replace('__PROJECT__', args.project).replace('__PERCENT__', str(args.sample_percent))
-    rows = query(sql, args.project, args.maximum_bytes_billed, 'training_extract')
+    rows = query(sql, args.project, args.maximum_bytes_billed, 'training_extract', args.resume_training_job)
     import pandas as pd
     from src.preprocessing.dataset import validate_dataset
     frame = pd.DataFrame(rows)

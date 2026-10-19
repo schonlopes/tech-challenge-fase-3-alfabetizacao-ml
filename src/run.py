@@ -21,6 +21,14 @@ from src.visualization.figures import eda_figures, evaluation_figures
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def verify_snapshot(path: Path, manifest_path: Path) -> str:
+    manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    if digest != manifest['snapshot_sha256']:
+        raise ValueError('Snapshot diferente do manifest de proveniência; interrompendo treinamento.')
+    return digest
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--data', type=Path, default=ROOT / 'data/raw/alunos_gold_modelagem.parquet')
@@ -31,6 +39,8 @@ def main():
         raise ValueError('search-iterations deve ser positivo.')
     if not args.data.exists():
         raise FileNotFoundError('Snapshot real não encontrado. Execute scripts/extract_gcp.py primeiro.')
+    if args.data.resolve() == (ROOT / 'data/raw/alunos_gold_modelagem.parquet').resolve():
+        verify_snapshot(args.data, ROOT / 'reports/evidence/snapshot_manifest.json')
     source = pd.read_parquet(args.data)
     data = prepare(source)
     report = ROOT / 'reports' / 'v1'
@@ -42,12 +52,13 @@ def main():
         municipalities=('id_municipio', 'nunique'), risk_prevalence=('risco', 'mean'))
     split_summary.to_csv(report / 'split_summary.csv')
     data.isna().mean().rename('fraction_missing').to_csv(report / 'missingness.csv')
-    data[['risco', 'taxa_municipal_anterior', 'log_populacao_anterior']].corr().to_csv(report / 'correlations.csv')
-    data.groupby('sigla_uf').agg(rows=('risco','size'), risk=('risco','mean')).to_csv(report / 'eda_uf.csv')
-    eda_figures(data, images)
     train = data[data.split.eq('train')]
     validation = data[data.split.eq('validation')]
     test = data[data.split.eq('test')]
+    # Label-based exploration is restricted to training, before model selection.
+    train[['risco', 'taxa_municipal_anterior', 'log_populacao_anterior']].corr().to_csv(report / 'correlations_train.csv')
+    train.groupby('sigla_uf').agg(rows=('risco','size'), risk=('risco','mean')).to_csv(report / 'eda_uf_train.csv')
+    eda_figures(train, images)
     if train.id_municipio.nunique() < 3:
         raise ValueError('GroupKFold requer ao menos três municípios no treino.')
     X_train, y_train = train[FEATURES], train.risco
@@ -80,6 +91,8 @@ def main():
     test_metrics = evaluate(test.risco, probabilities, threshold)
     baseline_threshold = float(comparison.loc[comparison.model.eq('dummy'), 'threshold'].iloc[0])
     baseline = evaluate(test.risco, fitted['dummy'].predict_proba(test[FEATURES])[:, 1], baseline_threshold)
+    historical_threshold = float(comparison.loc[comparison.model.eq('historical_rate'), 'threshold'].iloc[0])
+    historical = evaluate(test.risco, fitted['historical_rate'].predict_proba(test[FEATURES])[:, 1], historical_threshold)
     uncertainty = grouped_bootstrap(test.risco, probabilities, test.id_municipio, args.seed)
     permutation = permutation_importance(winner, X_val, y_val, scoring='average_precision',
         n_repeats=5, random_state=args.seed, n_jobs=1, max_samples=min(5000, len(validation)))
@@ -99,7 +112,8 @@ def main():
         'finished_at_utc':datetime.now(timezone.utc).isoformat(), 'seed':args.seed,
         'snapshot_sha256':hashlib.sha256(args.data.read_bytes()).hexdigest(),
         'winner':winner_name, 'selection':'validation average_precision; F2 threshold',
-        'test':test_metrics, 'dummy_test':baseline, 'test_uncertainty':uncertainty,
+        'test':test_metrics, 'dummy_test':baseline, 'historical_test':historical,
+        'test_uncertainty':uncertainty,
         'search':searches, 'features':FEATURES, 'positive_class':'nao_alfabetizado',
         'validation_protocol':'2024 municipality holdout; not an out-of-time test',
         'python':platform.python_version(),
@@ -112,6 +126,8 @@ def main():
         f'No teste territorial: AP {test_metrics["average_precision"]:.4f}, '
         f'ROC-AUC {test_metrics["roc_auc"]:.4f}, recall {test_metrics["recall"]:.4f}, '
         f'precisão {test_metrics["precision"]:.4f}.\n\n'
+        f'Baseline histórico municipal no teste: AP {historical["average_precision"]:.4f}, '
+        f'ROC-AUC {historical["roc_auc"]:.4f}.\n\n'
         f'Prevalência de risco: {test_metrics["risk_prevalence"]:.4f}. '
         f'Fração de alunos sinalizada: {test_metrics["alert_rate"]:.4f}.\n\n'
         'O alto recall deve ser lido junto à precisão e à quantidade de alertas. '

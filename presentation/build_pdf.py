@@ -1,5 +1,6 @@
 """Export the checked slide renders and a large-type phone reading script."""
 import json
+import argparse
 from pathlib import Path
 import re
 
@@ -68,18 +69,23 @@ def reading_pages(speech, capacity):
 
 
 def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--script-only',action='store_true',help='Preserva o PDF dos slides e o PPTX.')
+    parser.add_argument('--phone-name',default='Roteiro_Leitura_iPhone_Fase3.pdf')
+    args=parser.parse_args()
     deck=OUTPUT/'Apresentacao_Alfabetizacao_Fase3.pdf'
-    c=canvas.Canvas(str(deck),pagesize=(960,540))
-    c.setTitle(CONTENT['title'])
-    c.setAuthor(CONTENT['author'])
-    for i in range(1,9):
-        c.drawImage(ImageReader(BUILD/f'slide-{i:02}.png'),0,0,width=960,height=540)
-        c.showPage()
-    c.save()
+    if not args.script_only:
+        c=canvas.Canvas(str(deck),pagesize=(960,540))
+        c.setTitle(CONTENT['title'])
+        c.setAuthor(CONTENT['author'])
+        for i in range(1,9):
+            c.drawImage(ImageReader(BUILD/f'slide-{i:02}.png'),0,0,width=960,height=540)
+            c.showPage()
+        c.save()
 
-    phone=OUTPUT/'Roteiro_Leitura_iPhone_Fase3.pdf'
+    phone=OUTPUT/args.phone_name
     c=canvas.Canvas(str(phone),pagesize=(390,844))
-    c.setTitle('Roteiro de gravação - Fase 3')
+    c.setTitle('Roteiro enxuto de gravação - Fase 3')
     c.setAuthor(CONTENT['author'])
     c.setFillColor(HexColor('#FAFAF6'));c.rect(0,0,390,844,fill=1,stroke=0)
     draw_lines(c,['ROTEIRO DE GRAVAÇÃO'],30,790,17,26,'Arial-Bold',TEAL)
@@ -97,7 +103,7 @@ def main():
     timings=[]
     md=['# Roteiro do vídeo executivo - Fase 3',
         '', 'Meta de gravação: **4min45s**, com 15 segundos de margem até o limite de cinco minutos.',
-        'O tempo é estimado, não cronometrado por uma gravação real. Ensaiar antes de gravar.',
+        'Versão enxuta após a gravação anterior de 5min15s, informada pelo usuário. O novo tempo ainda é estimado. Ensaiar antes de gravar.',
         'O PDF móvel usa fonte de 24 pontos. Continuação de página não significa trocar de slide.', '']
     page_count=1
     for i,s in enumerate(CONTENT['slides'],1):
@@ -128,10 +134,14 @@ def main():
         '- Se o ensaio ultrapassar cinco minutos, reduzir a fala antes de gravar. Não acelerar a ponto de prejudicar a compreensão.', '']
     (ROOT/'docs/roteiro_video.md').write_text('\n'.join(md),encoding='utf-8')
     total=sum(t['words'] for t in timings)
-    (BUILD/'timing.json').write_text(json.dumps({'target_seconds':285,'total_words':total,
+    reference=CONTENT.get('timing_reference')
+    estimate=round(reference['user_reported_seconds']*total/reference['previous_words'],1) if reference else None
+    (BUILD/'timing.json').write_text(json.dumps({'target_seconds':CONTENT['target_seconds'],'total_words':total,
         'average_words_per_minute':round(total/285*60,1),'timings':timings,
+        'timing_reference':reference,'scaled_estimate_seconds':estimate,
         'phone_pages':page_count,'timing_is_estimated':True},indent=2),encoding='utf-8')
-    assert len(PdfReader(deck).pages)==8
+    if not args.script_only:
+        assert len(PdfReader(deck).pages)==8
     assert len(PdfReader(phone).pages)==page_count
     for s in CONTENT['slides']:
         for source in s['sources']:

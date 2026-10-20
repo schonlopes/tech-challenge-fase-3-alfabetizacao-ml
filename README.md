@@ -140,9 +140,9 @@ Pendentes para entrega: ensaio/gravação do vídeo, conferência final dos link
 
 ## Apresentação executiva
 
-[Slides editáveis](output/presentation/Alfabetizacao_Fase3.pptx), [slides em PDF](output/pdf/Apresentacao_Alfabetizacao_Fase3.pdf) e [roteiro com fonte grande para celular](output/pdf/Roteiro_Leitura_iPhone_Fase3.pdf). São oito slides, incluindo gráficos nativos, fluxo de dados e captura real do GCP. O encerramento aparece depois das evidências.
+[Slides editáveis](output/presentation/Alfabetizacao_Fase3.pptx), [slides em PDF](output/pdf/Apresentacao_Alfabetizacao_Fase3.pdf) e [roteiro enxuto com fonte grande para celular](output/pdf/Roteiro_Leitura_iPhone_Fase3_Enxuto.pdf). São oito slides, incluindo gráficos nativos, fluxo de dados e captura real do GCP. O encerramento aparece depois das evidências.
 
-O [roteiro editável](docs/roteiro_video.md) contém 584 palavras, com meta estimada de **4min45s**. É necessário ensaiar com cronômetro: não há gravação real para comprovar esse tempo. Os slides têm a mesma fala nas notas do apresentador. A apresentação distingue teste histórico v1, exploração v2, cenários territoriais e limitações de uso operacional. Não afirma que PRs remotas já existem.
+O [roteiro editável](docs/roteiro_video.md) foi reduzido de 584 para **507 palavras** em 20/10/2026, após o usuário informar que a primeira gravação durou 5min15s. No mesmo ritmo, a projeção proporcional é de aproximadamente 4min34s, mantendo a meta de até **4min45s** para acomodar pausas. O novo tempo ainda precisa de ensaio. O PowerPoint aberto com alterações locais foi preservado: suas notas ainda podem conter a fala anterior; usar o roteiro enxuto na nova gravação. A apresentação distingue teste histórico v1, exploração v2, cenários territoriais e limitações de uso operacional. Não afirma que PRs remotas já existem.
 
 ## Organização e Git
 

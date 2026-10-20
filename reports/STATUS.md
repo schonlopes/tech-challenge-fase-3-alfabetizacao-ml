@@ -28,6 +28,8 @@ Uma cópia somente dos arquivos versionados, sem snapshots/modelos reais, també
 
 Slides e roteiro preparados em `../output/` e `../docs/roteiro_video.md`. Restam ensaio, gravação de vídeo de até cinco minutos, conferência final dos links e publicação do GitHub por PRs. A matriz de critérios está em `../docs/atendimento_requisitos.md`.
 
+Em 20/10/2026, o usuário informou uma gravação de 5min15s. O roteiro foi reduzido de 584 para 507 palavras, com novo PDF móvel `Roteiro_Leitura_iPhone_Fase3_Enxuto.pdf`. A projeção proporcional é de cerca de 4min34s, mas depende do novo ensaio. O PPTX aberto e modificado pelo usuário não foi alterado nesta revisão; suas notas anteriores foram preservadas.
+
 ## Extração realizada
 
 Origem: tabelas do projeto GCP da Fase 2 e população pública do IBGE.

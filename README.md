@@ -8,7 +8,7 @@ Antecipar risco educacional para apoiar a priorização de acompanhamento pedag�
 
 ## Estado atual
 
-**Experimentos reais e análises executados em 19/10/2026**, com 92.389 alunos de 5.193 municípios e contexto público de 5.571 municípios. A classificação inclui preparação integrada, otimização e validação por município; a análise territorial inclui perfis, metas e cenários. **25 testes passaram**, e cinco prints reais do console GCP estão documentados. O projeto ainda depende da apresentação, vídeo e publicação com PRs para concluir a entrega.
+**Experimentos reais e análises executados em 19/10/2026**, com 92.389 alunos de 5.193 municípios e contexto público de 5.571 municípios. A classificação inclui preparação integrada, otimização e validação por município; a análise territorial inclui perfis, metas e cenários. **36 testes passaram**, e cinco prints reais do console GCP estão documentados. Há demonstração sem nuvem, previsão com modelo salvo e execuções isoladas. O projeto ainda depende da apresentação, vídeo e publicação com PRs para concluir a entrega.
 
 Amostras sintéticas da Fase 2 e eventos simulados de Pub/Sub não serão utilizados para avaliar os modelos. Fixtures artificiais existem somente nos testes de software e não constituem evidência de desempenho educacional.
 
@@ -57,28 +57,46 @@ Atributos iniciais: taxa municipal de alfabetização de 2023, log da populaçã
 
 ## Como reproduzir
 
-Python 3.11 ou superior. Dentro desta pasta, no PowerShell:
+Ambiente verificado: Python 3.11, com dependências fixadas. Dentro desta pasta, no PowerShell:
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements-lock.txt
 .venv\Scripts\python.exe -m pytest -q
 
+# Demonstração ARTIFICIAL completa, sem GCP e sem microdados.
+.venv\Scripts\python.exe -m src.demo
+
 # Requer Google Cloud SDK, sessão autenticada e autorização de acesso/extração.
 .venv\Scripts\python.exe scripts/extract_gcp.py --sample-percent 5
-.venv\Scripts\python.exe -m src.run --search-iterations 4
-.venv\Scripts\python.exe scripts/analyze_validation.py
+.venv\Scripts\python.exe -m src.run --search-iterations 4 --output-dir runs/repro-v1
+.venv\Scripts\python.exe scripts/analyze_validation.py --artifact runs/repro-v1/models/risk_v1.joblib
 
 # Complementos v2: somente agregados públicos novos; snapshot individual reutilizado.
 .venv\Scripts\python.exe scripts/extract_territorial.py
-.venv\Scripts\python.exe -m src.run_v2 --search-iterations 4
+.venv\Scripts\python.exe -m src.run_v2 --search-iterations 4 --baseline runs/repro-v1/models/risk_v1.joblib --output-dir runs/repro-v2
 .venv\Scripts\python.exe -m src.analyze_territories
-.venv\Scripts\python.exe scripts/explain_shap.py
+.venv\Scripts\python.exe scripts/explain_shap.py --experiment-dir runs/repro-v2
 ```
 
 É possível usar `requirements.txt` para versões compatíveis; `requirements-lock.txt` registra o ambiente atual, incluindo SHAP. A extração exige acesso ao projeto `tech-challenge-fase-2-506814` e às fontes públicas referenciadas. Nenhuma credencial deve ser colocada no repositório. O treinamento é local; as consultas e tabelas de origem ficam no GCP.
 
 Os testes podem ser repetidos sem conta cloud. Os experimentos reais exigem acesso legítimo ao snapshot/projeto; os scripts de extração aceitam `--project` para uma reconstrução própria das camadas. [Acesso e reprodução detalhados](docs/reproducao.md).
+
+Cada execução analítica cria uma pasta nova em `runs/`, com parâmetros, versões, commit e hashes. Não substitui os resultados históricos abaixo. Essas pastas podem conter dados individuais e ficam fora do Git. Os nomes fixos `runs/repro-v1` e `runs/repro-v2` dos exemplos devem ser trocados em uma segunda repetição, ou usar a geração automática omitindo `--output-dir`.
+
+## Modelo final e previsão
+
+O estimador de referência continua sendo a **logística original v1**. O uso padrão é somente produzir escores de risco, sem decisão automática sobre alunos. O limiar histórico F2 e a alternativa exploratória da v2 não são intercambiáveis: [decisão, evidência e limites](docs/modelo_e_politica.md).
+
+A ferramenta `python -m src.predict` carrega um artefato local confiável e recebe os atributos preparados em CSV/Parquet, sem treinar novamente. A entrada não precisa conter rótulo ou identificação de aluno. Para experimentar sem dados reais:
+
+```powershell
+.venv\Scripts\python.exe -m src.demo --output-dir runs/demo-exemplo
+.venv\Scripts\python.exe -m src.predict --artifact runs/demo-exemplo/models/demo.joblib --input runs/demo-exemplo/data/new_features.csv
+```
+
+A demonstração é artificial; não valida o desempenho do modelo real. Não carregar joblib/pickle desconhecido, pois pode executar código. A saída de previsão é privada e preserva a ordem da entrada. Detalhes do contrato e das opções em [reprodução](docs/reproducao.md).
 
 ## Resultados e aplicação prática
 
@@ -131,7 +149,8 @@ tests/          contratos, vazamento e execução integrada com fixtures artific
 notebooks/      orientação de navegação dos scripts analíticos
 reports/        auditoria, evidências e resultados
 images/         gráficos reproduzíveis
+runs/           novas execuções isoladas e privadas (ignoradas no Git)
 docs/           protocolo e decisões
 ```
 
-O Git local registra escopo, implementação, correções, experimentos e interpretação em commits próprios. Existem três branches de desenvolvimento, incluindo `feat/socioeconomic-territorial-analysis`. O plano das três PRs e a ordem de integração estão em [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md). A publicação no GitHub e as PRs serão feitas em etapa posterior; não são apresentadas como concluídas.
+O Git local registra escopo, implementação, correções, experimentos e interpretação em commits próprios. Existem quatro branches de desenvolvimento; a mais recente é `feat/reproducible-inference`, para política, demonstração, previsão e rastreabilidade. O plano das quatro PRs e a ordem de integração estão em [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md). A publicação no GitHub e as PRs serão feitas em etapa posterior; não são apresentadas como concluídas.

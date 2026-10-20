@@ -22,5 +22,6 @@ jobs:
           cache-dependency-path: requirements-lock.txt
       - run: python -m pip install -r requirements-lock.txt
       - run: python -m pytest -q
+      - run: python -m src.demo --output-dir runs/ci-artificial-demo
       - run: python -m compileall -q src scripts
       - run: python scripts/check_repository.py

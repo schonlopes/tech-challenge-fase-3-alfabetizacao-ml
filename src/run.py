@@ -17,6 +17,7 @@ from src.evaluation.interpretation import validation_importance
 from src.modeling.pipelines import candidates
 from src.preprocessing.dataset import FEATURES, prepare
 from src.visualization.figures import eda_figures, evaluation_figures
+from src.experiments import create_run, finish_run
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -34,6 +35,7 @@ def main():
     parser.add_argument('--data', type=Path, default=ROOT / 'data/raw/alunos_gold_modelagem.parquet')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--search-iterations', type=int, default=4)
+    parser.add_argument('--output-dir', type=Path, help='Nova pasta; nunca reutiliza uma execução anterior.')
     args = parser.parse_args()
     if args.search_iterations < 1:
         raise ValueError('search-iterations deve ser positivo.')
@@ -43,11 +45,10 @@ def main():
         verify_snapshot(args.data, ROOT / 'reports/evidence/snapshot_manifest.json')
     source = pd.read_parquet(args.data)
     data = prepare(source)
-    report = ROOT / 'reports' / 'v1'
-    images = ROOT / 'images' / 'v1'
-    models = ROOT / 'models'
-    for path in (report, images, models):
-        path.mkdir(parents=True, exist_ok=True)
+    output = create_run(ROOT, 'v1', args.output_dir, inputs={'snapshot':args.data},
+        parameters={'seed':args.seed,'search_iterations':args.search_iterations,
+                    'evaluation':'retrospective repeat; not a new independent test'})
+    report, images, models = output/'reports', output/'images', output/'models'
     split_summary = data.groupby('split').agg(rows=('risco', 'size'),
         municipalities=('id_municipio', 'nunique'), risk_prevalence=('risco', 'mean'))
     split_summary.to_csv(report / 'split_summary.csv')
@@ -131,6 +132,8 @@ def main():
         'Este resultado não comprova previsão de anos futuros nem efeito causal das variáveis. '
         'Os dados municipais são não ponderados, restritos à amostra e não equivalem ao indicador oficial. '
         'O modelo ainda depende de verificação da disponibilidade temporal dos dados históricos.\n', encoding='utf-8')
+    finish_run(output)
+    print(f'Execução preservada em: {output}')
     print(json.dumps(metadata, indent=2, ensure_ascii=False))
 
 

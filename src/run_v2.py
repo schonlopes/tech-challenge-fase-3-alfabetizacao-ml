@@ -18,6 +18,7 @@ from src.evaluation.metrics import evaluate
 from scripts.analyze_validation import capacity_options
 from src.visualization.figures import importance_figure, plt, save
 from src.run import verify_snapshot
+from src.experiments import create_run, finish_run
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -25,6 +26,9 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--search-iterations', type=int, default=4)
+    parser.add_argument('--baseline', type=Path, default=ROOT/'models/risk_v1.joblib',
+        help='Artefato v1 confiável; pode vir de runs/<id>/models/risk_v1.joblib.')
+    parser.add_argument('--output-dir', type=Path)
     args = parser.parse_args()
     if args.search_iterations < 1:
         raise ValueError('Número de tentativas deve ser positivo.')
@@ -33,16 +37,17 @@ def main():
     socioeconomic = read_territorial(ROOT, 'socioeconomic')
     data = development_data(pd.read_parquet(snapshot), socioeconomic)
     train, val = data[data.split.eq('train')], data[data.split.eq('validation')]
-    reports = ROOT / 'reports/v2'
-    images = ROOT / 'images/v2'
-    for path in [reports, images, ROOT/'models', ROOT/'data/processed']:
-        path.mkdir(parents=True, exist_ok=True)
+    output = create_run(ROOT,'v2',args.output_dir,
+        inputs={'snapshot':snapshot,'baseline':args.baseline,
+                'socioeconomic':ROOT/'data/raw/socioeconomic.parquet'},
+        parameters={'search_iterations':args.search_iterations,'seed':42,'evaluation':'validation_only'})
+    reports, images = output/'reports', output/'images'
     audited_context = numeric_social(socioeconomic)
     bad_ratio = audited_context[['fracao_va_administracao_indisponivel','fracao_va_industria_indisponivel']].any(axis=1)
     audited_context.loc[bad_ratio,['id_municipio','nome_municipio',
         'fracao_va_administracao_original','fracao_va_industria_original']].to_csv(
         reports/'economic_composition_unavailable.csv',index=False)
-    local = ROOT / 'data/processed/development_v2.parquet'
+    local = output / 'data/development_v2.parquet'
     data.to_parquet(local, index=False)
     (reports/'development_manifest.json').write_text(json.dumps({
         'rows':len(data), 'municipalities':int(data.id_municipio.nunique()),
@@ -50,7 +55,7 @@ def main():
         'v1_test_municipalities_excluded':True, 'features':ENRICHED_FEATURES,
     }, indent=2), encoding='utf-8')
     train[ENRICHED_FEATURES].isna().mean().to_csv(reports/'missingness_train.csv', header=['fraction_missing'])
-    frozen = joblib.load(ROOT/'models/risk_v1.joblib')['model']
+    frozen = joblib.load(args.baseline)['model']
     options = {
         'historical_rate':(HistoricalRateBaseline().fit(train[FEATURES], train.risco),None,FEATURES),
         'frozen_v1_logistic':(frozen,None,FEATURES),
@@ -92,7 +97,7 @@ def main():
     save(fig,images/'validation_comparison.png')
     threshold = float(comparison.iloc[0].threshold)
     joblib.dump({'model':model,'features':features,'threshold':threshold,
-        'positive_class':'nao_alfabetizado','protocol':'v2_validation_only'},ROOT/'models/risk_v2.joblib')
+        'positive_class':'nao_alfabetizado','protocol':'v2_validation_only'},output/'models/risk_v2.joblib')
     result = {'completed_at_utc':datetime.now(timezone.utc).isoformat(),
         'evaluation':'validation only; no new independent test result',
         'v1_test_municipalities_excluded':True,'winner_validation':name,
@@ -103,6 +108,8 @@ def main():
         'individual_snapshot_sha256':hashlib.sha256(snapshot.read_bytes()).hexdigest(),
         'socioeconomic_sha256':hashlib.sha256((ROOT/'data/raw/socioeconomic.parquet').read_bytes()).hexdigest()}
     (reports/'experiment.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
+    finish_run(output)
+    print(f'Execução preservada em: {output}')
     print(json.dumps(result,ensure_ascii=False,indent=2))
 
 

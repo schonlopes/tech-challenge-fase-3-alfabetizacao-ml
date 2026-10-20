@@ -1,5 +1,6 @@
 """Real validation explanations; exports only global aggregates, no individual rows."""
 from pathlib import Path
+import argparse
 import hashlib
 import json
 import sys
@@ -13,17 +14,25 @@ import shap
 from sklearn.linear_model import LogisticRegression
 from src.evaluation.shap_summary import grouped_shap
 from src.visualization.figures import plt, save
+from src.experiments import create_run, finish_run
 
 
 def main():
-    data_path = ROOT/'data/processed/development_v2.parquet'
-    manifest = json.loads((ROOT/'reports/v2/development_manifest.json').read_text())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--experiment-dir',type=Path,help='Execução v2 em runs/<id>. Omitir usa o arquivo histórico.')
+    parser.add_argument('--output-dir',type=Path)
+    args = parser.parse_args()
+    base = args.experiment_dir
+    data_path = base/'data/development_v2.parquet' if base else ROOT/'data/processed/development_v2.parquet'
+    manifest_path = base/'reports/development_manifest.json' if base else ROOT/'reports/v2/development_manifest.json'
+    artifact_path = base/'models/risk_v2.joblib' if base else ROOT/'models/risk_v2.joblib'
+    manifest = json.loads(manifest_path.read_text())
     if hashlib.sha256(data_path.read_bytes()).hexdigest()!=manifest['sha256']:
         raise ValueError('Snapshot de desenvolvimento alterado.')
     data = pd.read_parquet(data_path)
     if data.split.eq('test').any():
         raise ValueError('SHAP v2 não pode incluir o teste v1.')
-    artifact = joblib.load(ROOT/'models/risk_v2.joblib')
+    artifact = joblib.load(artifact_path)
     pipeline, features = artifact['model'], artifact['features']
     estimator = pipeline.named_steps['model']
     if not isinstance(estimator,LogisticRegression):
@@ -42,20 +51,25 @@ def main():
     error = float(np.max(np.abs(scores-reconstructed)))
     np.testing.assert_allclose(scores,reconstructed,atol=1e-8)
     summary = grouped_shap(preprocessing.get_feature_names_out(),explanation.values,features)
-    summary.to_csv(ROOT/'reports/v2/shap_global.csv',index=False)
+    output = create_run(ROOT,'shap',args.output_dir,
+        inputs={'development':data_path,'artifact':artifact_path,'manifest':manifest_path},
+        parameters={'seed':42,'evaluation':'validation_only'})
+    summary.to_csv(output/'reports/shap_global.csv',index=False)
     fig,ax = plt.subplots(figsize=(9,4))
     ordered = summary.sort_values('mean_abs_shap_log_odds')
     ax.barh(ordered.feature,ordered.mean_abs_shap_log_odds,color='#0D5E7D')
     ax.set(title='SHAP global - modelo selecionado, amostra de validação',
         xlabel='Contribuição absoluta média em log-odds do risco',ylabel='')
-    save(fig,ROOT/'images/v2/shap_global.png')
+    save(fig,output/'images/shap_global.png')
     metadata = {'shap_version':shap.__version__,'explainer':'LinearExplainer / Independent masker',
         'background':'200 training rows, seed 42','validation_rows_explained':len(explain),
         'unit':'log-odds for nao_alfabetizado; not probability percentage points',
         'maximum_additivity_error':error,'test_rows_explained':0,
         'individual_explanations_exported':False,'features':features,
         'limitation':'interventional attribution; correlated features and background choice affect allocation; not causal'}
-    (ROOT/'reports/v2/shap_metadata.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
+    (output/'reports/shap_metadata.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
+    finish_run(output)
+    print(f'Explicações preservadas em: {output}')
     print(json.dumps(metadata,indent=2))
 
 

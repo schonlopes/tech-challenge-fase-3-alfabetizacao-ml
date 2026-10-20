@@ -69,4 +69,4 @@ Os scripts usam limites de bytes, consultas identificadas e manifests. O script 
 
 Os resultados versionados podem ser auditados sem repetir consultas: SQL, parâmetros, hashes, versões, métricas e prints reais estão documentados. A reprodução estatística dos resultados reais continua condicionada ao acesso legítimo à mesma base e ambiente.
 
-Os prints são capturas de uma sessão real, não arquivos gerados pelo treinamento. `catalog_screenshots.py` apenas cataloga capturas existentes; não gera telas de GCP. A automação de CI prepara testes sem autenticação cloud e só será comprovada no GitHub após o push/PR.
+Os prints são capturas de uma sessão real, não arquivos gerados pelo treinamento. `catalog_screenshots.py` apenas cataloga capturas existentes; não gera telas de GCP. A automação de CI executa testes sem autenticação cloud. A execução remota deve ser verificada na seção Actions do GitHub.

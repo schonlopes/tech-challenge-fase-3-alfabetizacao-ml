@@ -1,20 +1,21 @@
-# Versionamento e publicação futura
+# Versionamento e integração
 
-O desenvolvimento desta Fase 3 tem um repositório Git próprio. Os commits são feitos conforme o trabalho acontece, sem reconstrução artificial de histórico.
+O projeto utiliza um repositório Git próprio. Os commits registram a evolução do código, dos experimentos e da documentação técnica.
 
-## Ramos locais
+## Branches de desenvolvimento
 
-| Branch | Finalidade | Integração futura |
+| Branch | Finalidade | Ordem de integração |
 | --- | --- | --- |
 | `main` | Escopo, auditoria inicial e documentação de partida | Base principal |
 | `feat/individual-risk-baseline` | Código da pipeline, testes, correções de extração e protocolo de validação | PR 1 para `main` |
 | `feat/real-data-experiment` | Proveniência dos dados, resultados reais, gráficos e interpretação do primeiro experimento | PR 2 para `main`, depois da integração da PR 1 |
 | `feat/socioeconomic-territorial-analysis` | Enriquecimento, compatibilidade de redes, perfis, metas, SHAP e prints reais | PR 3 para `main`, depois da integração da PR 2 |
 | `feat/reproducible-inference` | Política de decisão explícita, demo sem nuvem, previsão e execuções isoladas | PR 4 para `main`, depois da integração da PR 3 |
+| `feat/executive-presentation` | Slides executivos, gráficos, evidência GCP e roteiro de até cinco minutos | PR 5 para `main`, depois da integração da PR 4 |
 
-A segunda branch foi criada a partir da primeira, a terceira a partir da segunda, e a quarta a partir da terceira. As dependências serão integradas nessa ordem. Os commits de implementação permanecerão acessíveis no histórico. Novos enriquecimentos e análises devem utilizar outras branches a partir da base adequada, com PRs que expliquem as respectivas decisões.
+A segunda branch foi criada a partir da primeira, a terceira a partir da segunda, a quarta a partir da terceira e a quinta a partir da quarta. As dependências seguem essa ordem de integração. Os commits de implementação permanecem acessíveis no histórico. Novos enriquecimentos e análises devem utilizar outras branches a partir da base adequada, com PRs que expliquem as respectivas decisões.
 
-## PRs futuras
+## Procedimento de integração
 
 1. Publicar `main` e a branch de implementação no repositório da Fase 3.
 2. Abrir PR da implementação com objetivo, decisões sobre vazamento e validação, testes e limitações.
@@ -22,11 +23,22 @@ A segunda branch foi criada a partir da primeira, a terceira a partir da segunda
 4. Publicar a branch do experimento, conferir o diff contra a `main` atualizada e abrir a segunda PR com evidências e resultados reais.
 5. Publicar a terceira branch e abrir a PR de enriquecimento e análise territorial após integrar a segunda.
 6. Publicar a quarta branch e abrir a PR de reprodução/previsão após integrar a terceira.
-7. Para cada nova mudança, registrar revisão e justificativas pertinentes. Não fabricar comentários, aprovações, colaboração ou cronologia.
+7. Publicar a quinta branch e abrir a PR dos materiais executivos após integrar a quarta. Conferir a versão dos slides e a gravação antes da entrega.
+8. Registrar em cada PR o objetivo, as decisões técnicas, os testes e as limitações das alterações.
 
-As PRs acima são **planejadas**, não foram criadas. Nenhum envio ao GitHub foi realizado nesta etapa.
+## Registros no GitHub
 
-Foi preparado um workflow para testes, compilação e conferência do repositório em push/PR, sem credenciais GCP ou extração de microdados. A execução remota desse workflow só poderá ser comprovada após a publicação. As ações seguem os exemplos oficiais de [checkout](https://github.com/actions/checkout) e [setup-python](https://github.com/actions/setup-python).
+As cinco etapas possuem PRs reais, com descrição do objetivo, decisões técnicas e limitações:
+
+1. [PR #1 — Pipeline supervisionada e validação por município](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pull/1).
+2. [PR #2 — Experimento real e avaliação v1](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pull/2).
+3. [PR #3 — Enriquecimento, SHAP, territórios e evidências GCP](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pull/3).
+4. [PR #4 — Inferência, reprodução e rastreabilidade](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pull/4).
+5. [PR #5 — Apresentação, vídeo e revisão final](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pull/5).
+
+Os estados e registros de merge são consultáveis diretamente nas PRs. A integração utiliza merge commits, preservando os commits das branches; não há alegação de revisão independente por terceiros.
+
+O workflow executa testes, compilação e conferência do repositório em push/PR, sem credenciais GCP ou extração de microdados. A execução remota deve ser verificada na seção Actions do GitHub. As ações seguem os exemplos oficiais de [checkout](https://github.com/actions/checkout) e [setup-python](https://github.com/actions/setup-python).
 
 ## O que versionar
 

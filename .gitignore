@@ -8,5 +8,8 @@ data/processed/*
 models/
 reports/private/
 runs/
+.chart-data-*/
+output/pdf/
+~$*
 !data/raw/.gitkeep
 !data/processed/.gitkeep

@@ -26,8 +26,8 @@ As análises municipais do teste se referem à amostra avaliada. Não comparar d
 
 ## Evidências
 
-Guardar SQL, SHA-256 do snapshot, número do job, bytes processados/faturados, perfil da fonte e metadados de execução. Os prints reais do console GCP ainda devem ser capturados e vinculados às evidências. Arquivos JSON de jobs não substituem prints. Não publicar microdados ou identificadores individuais no Git.
+As evidências registram SQL, SHA-256 do snapshot, número do job, bytes processados/faturados, perfil da fonte e metadados de execução. Cinco capturas reais do console GCP complementam os registros dos jobs. Microdados e identificadores individuais permanecem fora do Git.
 
-## Pendências além da v1
+## Análises complementares à v1
 
-Enriquecimento socioeconômico propriamente dito (população não equivale a renda, vulnerabilidade ou infraestrutura); metas nacionais/estaduais em uma análise sem vazamento; segmentação de municípios; cenário temporal de metas futuras com histórico suficiente; SHAP se acrescentar valor além de importância por permutação; prints reais; apresentação e vídeo executivo; PRs reais no repositório remoto.
+O enriquecimento socioeconômico, as metas nacionais e estaduais, a segmentação municipal, a interpretação SHAP e os cenários territoriais estão documentados no protocolo v2 e nos relatórios correspondentes. População não equivale a renda, vulnerabilidade ou infraestrutura. Os cenários de longo prazo não constituem previsões estatisticamente validadas.

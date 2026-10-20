@@ -17,11 +17,11 @@ Avaliação local em 19/10/2026. Esta matriz distingue implementação, evidênc
 | Metas futuras | Cenários explícitos e referência retrospectiva | Persistência/ganho constante, avanço necessário, backtest 2023-2024; sem previsão validada para 2030 |
 | Metas nacionais/estaduais/municipais | Implementado | Anos e redes separados; normalização dos códigos; não produzir Brasil por média simples |
 | Enriquecimento externo | Implementado | IPEA 2010, PIB 2021 e população 2022, com proveniência e limites de atualização |
-| Estrutura, README, código e documentação | Implementado localmente | Pastas exigidas, scripts reproduzíveis e relatórios; a proposta aceita scripts ou notebooks |
-| Histórico e branches Git | Implementado localmente | Commits reais e quatro branches; `GIT_WORKFLOW.md` |
-| Repositório remoto e PRs | Pendente | Planejadas quatro PRs em sequência; ainda não publicadas |
+| Estrutura, README, código e documentação | Implementado e publicado | Pastas exigidas, scripts reproduzíveis e relatórios; a proposta aceita scripts ou notebooks |
+| Histórico e branches Git | Publicado | Commits reais e cinco branches; [política e registros](GIT_WORKFLOW.md) |
+| Repositório remoto e PRs | Registros públicos | [Repositório e PRs](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pulls?q=is%3Apr), com objetivos, decisões e limitações |
 | Evidência visual do GCP (feedback da Fase 2) | Adicionada | Cinco prints reais em `reports/evidence/GCP_SCREENSHOTS.md` |
-| Vídeo executivo até 5 minutos | Pendente | Preparar apresentação/roteiro e gravar; não foi entregue nesta etapa |
+| Vídeo executivo até 5 minutos | Concluído | Vídeo final conferido: 292,5s no MKV original e 292,4s no MP4 da entrega; oito slides e roteiro de 507 palavras |
 
 ## Hipóteses e decisões decorrentes
 

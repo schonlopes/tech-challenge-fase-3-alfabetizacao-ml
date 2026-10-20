@@ -37,4 +37,4 @@ Uma observação econômica apresentou razões setoriais fora do intervalo inter
 
 ## Evidências e Git
 
-Branch própria `feat/socioeconomic-territorial-analysis`. Preservar as versões e relatórios v1. Publicar futuramente por PR após as branches anteriores, conforme o encadeamento real de dependências. Registrar consultas, hashes, testes e limitações. Prints reais ainda serão necessários quando o controle seguro da interface estiver disponível.
+Branch própria `feat/socioeconomic-territorial-analysis`, preservando as versões e relatórios v1. A integração segue o encadeamento de dependências documentado em `GIT_WORKFLOW.md`. Consultas, hashes, testes, limitações e cinco capturas reais do console estão registrados nas evidências.

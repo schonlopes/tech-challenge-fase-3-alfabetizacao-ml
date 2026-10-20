@@ -18,7 +18,9 @@ Trata-se de uma avaliação retrospectiva com separação territorial: treino, v
 
 ## Métricas e escolha
 
-Comparar DummyClassifier, regressão logística e Random Forest. Selecionar por average precision (área PR) na validação. Ajustar limiar no mesmo conjunto buscando o melhor F2 (maior peso para recall), sem interpretar isso como política ótima de alocação. Medir também recall, precisão, F1, ROC-AUC, Brier e matriz de confusão. Comparar com a prevalência do risco. Reportar incerteza por bootstrap de municípios e resultados por UF para o modelo escolhido.
+Comparar DummyClassifier, baseline histórico municipal, regressão logística e Random Forest. Selecionar por average precision (área PR) na validação. Ajustar limiar no mesmo conjunto buscando o melhor F2 (maior peso para recall), sem interpretar isso como política ótima de alocação. Medir também recall, precisão, F1, ROC-AUC, Brier e matriz de confusão. Comparar com a prevalência do risco. Reportar incerteza por bootstrap de municípios e resultados por UF para o modelo escolhido.
+
+Antes da primeira avaliação real: explorar o alvo somente no treino. Na avaliação final, medir também os dois baselines pré-definidos (Dummy e histórico) para permitir interpretar o ganho sobre a regra contextual simples. Essa comparação não altera a escolha do modelo, que já foi feita na validação. O snapshot padrão deve corresponder ao hash do manifest de extração.
 
 As análises municipais do teste se referem à amostra avaliada. Não comparar diretamente probabilidades não ponderadas da amostra com metas oficiais, nem chamar isso de previsão validada de cumprimento de metas futuras.
 

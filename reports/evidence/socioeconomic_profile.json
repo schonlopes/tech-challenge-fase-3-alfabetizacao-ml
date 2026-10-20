@@ -1,0 +1,802 @@
+[
+  {
+    "ano": "2010",
+    "localizacao": "urbano",
+    "raca_cor": "total",
+    "rows_count": "5565",
+    "sexo": "total",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "urbano",
+    "raca_cor": "branco",
+    "rows_count": "5565",
+    "sexo": "homem",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "branco",
+    "rows_count": "5565",
+    "sexo": "mulher",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "urbano",
+    "raca_cor": "branco",
+    "rows_count": "5565",
+    "sexo": "total",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "negro",
+    "rows_count": "5565",
+    "sexo": "homem",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "5565",
+    "sexo": "total",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "urbano",
+    "raca_cor": "branco",
+    "rows_count": "5565",
+    "sexo": "mulher",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "branco",
+    "rows_count": "5565",
+    "sexo": "homem",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "urbano",
+    "raca_cor": "total",
+    "rows_count": "5565",
+    "sexo": "homem",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "branco",
+    "rows_count": "5565",
+    "sexo": "total",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "5565",
+    "sexo": "mulher",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "negro",
+    "rows_count": "5565",
+    "sexo": "mulher",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "5565",
+    "sexo": "homem",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "urbano",
+    "raca_cor": "total",
+    "rows_count": "5565",
+    "sexo": "mulher",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "negro",
+    "rows_count": "5565",
+    "sexo": "total",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "urbano",
+    "raca_cor": "negro",
+    "rows_count": "5557",
+    "sexo": "total",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "urbano",
+    "raca_cor": "negro",
+    "rows_count": "5555",
+    "sexo": "homem",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "urbano",
+    "raca_cor": "negro",
+    "rows_count": "5554",
+    "sexo": "mulher",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "rural",
+    "raca_cor": "total",
+    "rows_count": "5496",
+    "sexo": "homem",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "rural",
+    "raca_cor": "total",
+    "rows_count": "5496",
+    "sexo": "mulher",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "rural",
+    "raca_cor": "total",
+    "rows_count": "5496",
+    "sexo": "total",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "rural",
+    "raca_cor": "branco",
+    "rows_count": "5495",
+    "sexo": "total",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "rural",
+    "raca_cor": "branco",
+    "rows_count": "5495",
+    "sexo": "homem",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "rural",
+    "raca_cor": "branco",
+    "rows_count": "5493",
+    "sexo": "mulher",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "rural",
+    "raca_cor": "negro",
+    "rows_count": "5491",
+    "sexo": "total",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "rural",
+    "raca_cor": "negro",
+    "rows_count": "5488",
+    "sexo": "homem",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "rural",
+    "raca_cor": "negro",
+    "rows_count": "5485",
+    "sexo": "mulher",
+    "udh": "geral"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455707096"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330350000171"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1150140200029"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330555400015"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455702061"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455710114"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1320530904026"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1530010800165"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330350000079"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1320130800042"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1510840200029"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455710249"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455710252"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1130260300170"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1270430200032"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330330200039"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1240710400007"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330490400057"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1230370900005"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330510900062"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455703033"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330360900014"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1530010800175"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455705007"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330250200022"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330510900016"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1320510100020"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455704033"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455710023"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330330200040"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1150140200010"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330510900004"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1520920000001"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330490400092"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455704025"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1270430200050"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1130260300189"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455709041"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455705025"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1230370900038"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455705014"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1150140200068"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455706003"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1521000000004"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1150140200040"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330250200032"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455707041"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1150080000020"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1130260300138"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455707024"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1240325100030"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1240710400019"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1130250400006"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1522140300014"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1240810200024"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330250200016"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1270430200125"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455710070"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330227000011"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330320300012"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455710081"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330330200101"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1270430200076"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455710095"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330330200037"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455706026"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1530010800218"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1150080000007"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330330200108"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455702016"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455705015"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1530010800025"
+  },
+  {
+    "ano": "2010",
+    "localizacao": "total",
+    "raca_cor": "total",
+    "rows_count": "1",
+    "sexo": "total",
+    "udh": "1330455701140"
+  }
+]

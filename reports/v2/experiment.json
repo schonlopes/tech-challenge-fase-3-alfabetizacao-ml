@@ -1,0 +1,51 @@
+{
+  "completed_at_utc": "2026-10-19T14:57:55.415508+00:00",
+  "evaluation": "validation only; no new independent test result",
+  "v1_test_municipalities_excluded": true,
+  "winner_validation": "frozen_v1_logistic",
+  "threshold_policy": "Illustrative maximum 20% alerts in validation; ties preserved",
+  "train_rows": 61503,
+  "validation_rows": 15163,
+  "selected_validation": {
+    "model": "frozen_v1_logistic",
+    "rows": 15163,
+    "risk_prevalence": 0.398733759810064,
+    "threshold": 0.5102423842055074,
+    "average_precision": 0.5586992392598897,
+    "roc_auc": 0.6729941386447822,
+    "brier": 0.21852175306382612,
+    "precision": 0.601123595505618,
+    "recall": 0.3008600727753887,
+    "f1": 0.4010141093474427,
+    "f2": 0.3342521131936788,
+    "alert_rate": 0.1995647299347095
+  },
+  "search": {
+    "enriched_logistic": {
+      "best_params": {
+        "model__C": 0.1
+      },
+      "cv_ap": 0.5390684153743717
+    },
+    "enriched_random_forest": {
+      "best_params": {
+        "model__min_samples_leaf": 300,
+        "model__max_features": "sqrt",
+        "model__max_depth": 10
+      },
+      "cv_ap": 0.5328907776102239
+    }
+  },
+  "features": [
+    "taxa_municipal_anterior",
+    "log_populacao_anterior",
+    "rede",
+    "serie",
+    "sigla_uf",
+    "regiao"
+  ],
+  "social_reference_year": 2010,
+  "economic_reference_year": 2021,
+  "individual_snapshot_sha256": "153ab56038bd7664702e5ad4fac981a9dc5e8b6f08c4d418af24cda50be30ec7",
+  "socioeconomic_sha256": "478d58f7856b8714a32186326f13c217d38ca2464de685761999828cd9cb0edf"
+}

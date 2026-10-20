@@ -1,0 +1,19 @@
+{
+  "shap_version": "0.51.0",
+  "explainer": "LinearExplainer / Independent masker",
+  "background": "200 training rows, seed 42",
+  "validation_rows_explained": 500,
+  "unit": "log-odds for nao_alfabetizado; not probability percentage points",
+  "maximum_additivity_error": 4.440892098500626e-16,
+  "test_rows_explained": 0,
+  "individual_explanations_exported": false,
+  "features": [
+    "taxa_municipal_anterior",
+    "log_populacao_anterior",
+    "rede",
+    "serie",
+    "sigla_uf",
+    "regiao"
+  ],
+  "limitation": "interventional attribution; correlated features and background choice affect allocation; not causal"
+}

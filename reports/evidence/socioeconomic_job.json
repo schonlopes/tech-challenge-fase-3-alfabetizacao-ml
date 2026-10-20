@@ -1,0 +1,37 @@
+{
+  "job_id": "fase3_133f9860cdd4422685f1fc6b60c8b371",
+  "project": "tech-challenge-fase-2-506814",
+  "location": "US",
+  "captured_at_utc": "2026-10-19T14:52:29.812329+00:00",
+  "query_sha256": "22f19f2f030a37b77b1bb2799391d4e594558b5aa05a86f99d0a3e0e97c95966",
+  "maximum_bytes_billed": 1000000000,
+  "total_bytes_processed": "38385395",
+  "total_bytes_billed": "41943040",
+  "cache_hit": false,
+  "status": {
+    "state": "DONE"
+  },
+  "referenced_tables": [
+    {
+      "projectId": "basedosdados",
+      "datasetId": "br_ipea_avs",
+      "tableId": "municipio"
+    },
+    {
+      "projectId": "tech-challenge-fase-2-506814",
+      "datasetId": "alfabetizacao_silver",
+      "tableId": "dim_municipio"
+    },
+    {
+      "projectId": "basedosdados",
+      "datasetId": "br_ibge_pib",
+      "tableId": "municipio"
+    },
+    {
+      "projectId": "basedosdados",
+      "datasetId": "br_ibge_populacao",
+      "tableId": "municipio"
+    }
+  ],
+  "returned_rows": 5571
+}

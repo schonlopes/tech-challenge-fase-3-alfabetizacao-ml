@@ -67,7 +67,7 @@ def evaluation_figures(y, probability, threshold, validation_comparison, importa
 
 
 def importance_figure(importance, path):
-    fig, ax = plt.subplots(figsize=(8, 4))
+    fig, ax = plt.subplots(figsize=(9, max(4,len(importance)*0.4)))
     importance.sort_values('importance').plot.barh(x='feature', y='importance',
         xerr='std', legend=False, ax=ax, color=COLORS[0])
     ax.set(title='Importância por permutação na validação', xlabel='Redução de average precision', ylabel='')

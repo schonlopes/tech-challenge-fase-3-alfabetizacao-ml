@@ -28,7 +28,8 @@ class HistoricalRateBaseline(ClassifierMixin, BaseEstimator):
         return (self.predict_proba(X)[:, 1] >= 0.5).astype(int)
 
 
-def preprocessing():
+def preprocessing(numeric=None):
+    numeric = NUMERIC if numeric is None else numeric
     numerical = Pipeline([
         ('imputer', SimpleImputer(strategy='median', add_indicator=True, keep_empty_features=True)),
         ('scale', StandardScaler()),
@@ -37,7 +38,7 @@ def preprocessing():
         ('imputer', SimpleImputer(strategy='most_frequent', keep_empty_features=True)),
         ('encode', OneHotEncoder(handle_unknown='ignore', sparse_output=False)),
     ])
-    return ColumnTransformer([('numeric', numerical, NUMERIC),
+    return ColumnTransformer([('numeric', numerical, numeric),
                               ('categorical', categorical, CATEGORICAL)], remainder='drop')
 
 

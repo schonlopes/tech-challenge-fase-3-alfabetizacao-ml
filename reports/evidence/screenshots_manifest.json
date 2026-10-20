@@ -1,0 +1,44 @@
+{
+  "cataloged_at_utc": "2026-10-19T15:12:08.638019+00:00",
+  "project": "tech-challenge-fase-2-506814",
+  "query_job_id": "fase3_74a8f4d8dc004749acd81c572d5fc54f",
+  "query_console_url": "https://console.cloud.google.com/bigquery?project=tech-challenge-fase-2-506814&j=bq:US:fase3_74a8f4d8dc004749acd81c572d5fc54f&page=queryresults",
+  "purpose": "Proof of GCP data/query execution. Models were trained locally, not in GCP.",
+  "screenshots": [
+    {
+      "file": "images/evidence/gcp_gold_details.png",
+      "description": "Gold table identifier, project and actual creation metadata",
+      "sha256": "f906b8cd8494741630a353225652bc449b6c10f1aee3ae52bcef613432edcac1",
+      "file_last_modified_at_utc": "2026-10-19T15:00:17.988931+00:00",
+      "capture_type": "real browser UI screenshot; no reconstructed console image"
+    },
+    {
+      "file": "images/evidence/gcp_gold_storage_partitioning.png",
+      "description": "23,995 Gold rows, two partitions, clustering and storage",
+      "sha256": "e9b12af9249bf0b25e9fca4e2e029233704e50b2975f2f4f4543ea07344f19dc",
+      "file_last_modified_at_utc": "2026-10-19T15:00:30.933011+00:00",
+      "capture_type": "real browser UI screenshot; no reconstructed console image"
+    },
+    {
+      "file": "images/evidence/gcp_query_processing_controls.png",
+      "description": "Completed municipal query: elapsed time and actual processed/billed bytes",
+      "sha256": "ab6c55cd1e77f5188b517a7fe7ab4405bc658f5e9b0db8598aa04d41e466e3fb",
+      "file_last_modified_at_utc": "2026-10-19T15:02:19.443375+00:00",
+      "capture_type": "real browser UI screenshot; no reconstructed console image"
+    },
+    {
+      "file": "images/evidence/gcp_query_execution_plan.png",
+      "description": "Actual execution time, slot use and shuffle metrics",
+      "sha256": "b726b84a63da1708fc3e2cb03851d829fd1532430961e6a28abdc711d79df707",
+      "file_last_modified_at_utc": "2026-10-19T15:02:58.060951+00:00",
+      "capture_type": "real browser UI screenshot; no reconstructed console image"
+    },
+    {
+      "file": "images/evidence/gcp_query_execution_rows.png",
+      "description": "Actual execution stage with 40,051 input and 23,995 output rows",
+      "sha256": "2f8eea14a14883a8f05202536243b03f72eb296474649b7e4612e11d36f41ad0",
+      "file_last_modified_at_utc": "2026-10-19T15:03:13.658115+00:00",
+      "capture_type": "real browser UI screenshot; no reconstructed console image"
+    }
+  ]
+}

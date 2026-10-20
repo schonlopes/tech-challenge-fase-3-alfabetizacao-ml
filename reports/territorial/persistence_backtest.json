@@ -1,0 +1,20 @@
+{
+  "method": "persistence: 2023 result as 2024 estimate",
+  "evaluation": "single retrospective transition; current snapshots, not point-in-time vintage",
+  "municipalities": 5232,
+  "mae_pp": 12.45323394495413,
+  "rmse_pp": 16.807273725278964,
+  "below_target_precision": 0.47106669765280035,
+  "below_target_recall": 0.8293780687397708,
+  "confusion_matrix": [
+    [
+      512,
+      2276
+    ],
+    [
+      417,
+      2027
+    ]
+  ],
+  "does_not_validate_2030_scenarios": true
+}

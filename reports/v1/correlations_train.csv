@@ -1,0 +1,4 @@
+,risco,taxa_municipal_anterior,log_populacao_anterior
+risco,1.0,-0.23886208065409004,0.04494079499205273
+taxa_municipal_anterior,-0.23886208065409004,1.0,-0.24666231404477623
+log_populacao_anterior,0.04494079499205273,-0.24666231404477623,1.0

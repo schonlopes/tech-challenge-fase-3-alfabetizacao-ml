@@ -1,0 +1,22 @@
+{
+  "job_id": "fase3_0b2c007274944790a43ade7c03406c6d",
+  "project": "tech-challenge-fase-2-506814",
+  "location": "US",
+  "captured_at_utc": "2026-10-19T14:12:38.437493+00:00",
+  "query_sha256": "6c2d9a5f64b83af380b6055baa3a8692e535eb2a7c67c6913262b71770cb3e02",
+  "maximum_bytes_billed": 2000000000,
+  "total_bytes_processed": "320293098",
+  "total_bytes_billed": "320864256",
+  "cache_hit": false,
+  "status": {
+    "state": "DONE"
+  },
+  "referenced_tables": [
+    {
+      "projectId": "tech-challenge-fase-2-506814",
+      "datasetId": "alfabetizacao_silver",
+      "tableId": "alunos"
+    }
+  ],
+  "returned_rows": 7
+}

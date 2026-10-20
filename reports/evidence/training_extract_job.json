@@ -1,0 +1,37 @@
+{
+  "job_id": "fase3_21b16e27d7a44d76898ddaf5d35c98b8",
+  "project": "tech-challenge-fase-2-506814",
+  "location": "US",
+  "captured_at_utc": "2026-10-19T14:12:48.290398+00:00",
+  "query_sha256": "5d516a1d245214c022f7447d1f82b56fc0010c518f57275d3b42d55a3cc51c31",
+  "maximum_bytes_billed": 2000000000,
+  "total_bytes_processed": "234054455",
+  "total_bytes_billed": "234881024",
+  "cache_hit": false,
+  "status": {
+    "state": "DONE"
+  },
+  "referenced_tables": [
+    {
+      "projectId": "tech-challenge-fase-2-506814",
+      "datasetId": "alfabetizacao_silver",
+      "tableId": "alunos"
+    },
+    {
+      "projectId": "tech-challenge-fase-2-506814",
+      "datasetId": "alfabetizacao_gold",
+      "tableId": "indicador_municipio"
+    },
+    {
+      "projectId": "basedosdados",
+      "datasetId": "br_ibge_populacao",
+      "tableId": "municipio"
+    },
+    {
+      "projectId": "tech-challenge-fase-2-506814",
+      "datasetId": "alfabetizacao_silver",
+      "tableId": "dim_municipio"
+    }
+  ],
+  "returned_rows": 92389
+}

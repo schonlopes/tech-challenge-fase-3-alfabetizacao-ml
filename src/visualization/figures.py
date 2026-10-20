@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.calibration import calibration_curve
 from sklearn.metrics import (ConfusionMatrixDisplay, precision_recall_curve, roc_curve,
-                             average_precision_score, roc_auc_score)
+                             average_precision_score, roc_auc_score, confusion_matrix)
 
 plt.rcParams.update({'font.size': 11, 'axes.spines.top': False, 'axes.spines.right': False,
                      'figure.facecolor': 'white', 'axes.titleweight': 'bold'})
@@ -56,18 +56,27 @@ def evaluation_figures(y, probability, threshold, validation_comparison, importa
     axes[1].legend()
     axes[1].set_title('ROC no teste')
     save(fig, directory / 'test_curves.png')
-    fig, ax = plt.subplots(figsize=(6, 4))
-    ConfusionMatrixDisplay.from_predictions(y, probability >= threshold,
-        display_labels=['Alfabetizado', 'Não alfabetizado'], ax=ax, cmap='Blues', colorbar=False)
-    ax.set_title('Teste: limiar escolhido na validação')
-    save(fig, directory / 'test_confusion.png')
+    confusion_figure(confusion_matrix(y, probability >= threshold, labels=[0,1]),
+                     directory / 'test_confusion.png')
     fig, ax = plt.subplots(figsize=(6, 4))
     observed, predicted = calibration_curve(y, probability, n_bins=10, strategy='quantile')
     ax.plot(predicted, observed, 'o-', color=COLORS[0]); ax.plot([0, 1], [0, 1], '--', color=COLORS[3])
     ax.set(title='Calibração no teste', xlabel='Risco previsto', ylabel='Fração observada')
     save(fig, directory / 'test_calibration.png')
+    importance_figure(importance, directory / 'validation_importance.png')
+
+
+def importance_figure(importance, path):
     fig, ax = plt.subplots(figsize=(8, 4))
     importance.sort_values('importance').plot.barh(x='feature', y='importance',
         xerr='std', legend=False, ax=ax, color=COLORS[0])
     ax.set(title='Importância por permutação na validação', xlabel='Redução de average precision', ylabel='')
-    save(fig, directory / 'validation_importance.png')
+    save(fig, path)
+
+
+def confusion_figure(counts, path):
+    fig, ax = plt.subplots(figsize=(6, 4))
+    ConfusionMatrixDisplay(confusion_matrix=np.asarray(counts),
+        display_labels=['Alfabetizado', 'Não alfabetizado']).plot(ax=ax, cmap='Blues', colorbar=False)
+    ax.set(title='Teste: limiar escolhido na validação', xlabel='Classe prevista', ylabel='Classe observada')
+    save(fig, path)

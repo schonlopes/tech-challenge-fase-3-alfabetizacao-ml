@@ -1,0 +1,72 @@
+[
+  {
+    "alfabetizado": "Nao",
+    "ano": "2023",
+    "divergencias_rotulo": "0",
+    "elegiveis": "0",
+    "origem": "basedosdados.br_inep_avaliacao_alfabetizacao.alunos",
+    "presenca": "Ausente",
+    "registros": "244381",
+    "sem_proficiencia": "244381"
+  },
+  {
+    "alfabetizado": "Nao",
+    "ano": "2023",
+    "divergencias_rotulo": "0",
+    "elegiveis": "625382",
+    "origem": "basedosdados.br_inep_avaliacao_alfabetizacao.alunos",
+    "presenca": "Presente",
+    "registros": "625631",
+    "sem_proficiencia": "249"
+  },
+  {
+    "alfabetizado": "Sim",
+    "ano": "2023",
+    "divergencias_rotulo": "0",
+    "elegiveis": "877427",
+    "origem": "basedosdados.br_inep_avaliacao_alfabetizacao.alunos",
+    "presenca": "Presente",
+    "registros": "877427",
+    "sem_proficiencia": "0"
+  },
+  {
+    "alfabetizado": "Nao",
+    "ano": "2024",
+    "divergencias_rotulo": "0",
+    "elegiveis": "0",
+    "origem": "basedosdados.br_inep_avaliacao_alfabetizacao.alunos",
+    "presenca": "Ausente",
+    "registros": "267772",
+    "sem_proficiencia": "267772"
+  },
+  {
+    "alfabetizado": "Nao",
+    "ano": "2024",
+    "divergencias_rotulo": "0",
+    "elegiveis": "744733",
+    "origem": "basedosdados.br_inep_avaliacao_alfabetizacao.alunos",
+    "presenca": "Presente",
+    "registros": "745669",
+    "sem_proficiencia": "936"
+  },
+  {
+    "alfabetizado": "Sim",
+    "ano": "2024",
+    "divergencias_rotulo": "0",
+    "elegiveis": "1107119",
+    "origem": "basedosdados.br_inep_avaliacao_alfabetizacao.alunos",
+    "presenca": "Presente",
+    "registros": "1107119",
+    "sem_proficiencia": "0"
+  },
+  {
+    "alfabetizado": "Nao",
+    "ano": "2026",
+    "divergencias_rotulo": "0",
+    "elegiveis": "1",
+    "origem": "pubsub",
+    "presenca": "Presente",
+    "registros": "1",
+    "sem_proficiencia": "0"
+  }
+]

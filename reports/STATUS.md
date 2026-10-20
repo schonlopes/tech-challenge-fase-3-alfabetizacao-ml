@@ -1,4 +1,4 @@
-# Estado do projeto - 19/10/2026
+# Estado do projeto - 20/10/2026
 
 Extração autorizada e concluída: 92.389 registros válidos de alunos de 2024, distribuídos por 5.193 municípios. O snapshot está somente local, ignorado pelo Git. A amostra integra Silver individual, Gold municipal de 2023 e população IBGE de 2022. Não houve criação ou alteração de tabelas cloud nesta etapa.
 
@@ -26,9 +26,11 @@ Uma cópia somente dos arquivos versionados, sem snapshots/modelos reais, també
 
 ## Pendências de entrega
 
-Slides e roteiro preparados em `../output/` e `../docs/roteiro_video.md`. Restam ensaio, gravação de vídeo de até cinco minutos, conferência final dos links e publicação do GitHub por PRs. A matriz de critérios está em `../docs/atendimento_requisitos.md`.
+Slides finais, roteiro e vídeo MP4 estão em `../output/` e `../docs/roteiro_video.md`. A revisão local terminou com 36 testes aprovados, links locais válidos, cinco capturas GCP íntegras e vídeo de 4min52s. Resta publicar no GitHub e integrar por PRs. A matriz de critérios está em `../docs/atendimento_requisitos.md`.
 
-Em 20/10/2026, o usuário informou uma gravação de 5min15s. O roteiro foi reduzido de 584 para 507 palavras, com novo PDF móvel `Roteiro_Leitura_iPhone_Fase3_Enxuto.pdf`. A projeção proporcional é de cerca de 4min34s, mas depende do novo ensaio. O PPTX aberto e modificado pelo usuário não foi alterado nesta revisão; suas notas anteriores foram preservadas.
+Após a gravação inicial de 5min15s, o roteiro foi reduzido de 584 para 507 palavras. O vídeo final fornecido pelo autor tem 292,5s no MKV original e 292,4s na cópia MP4 sem recodificação. As alterações finais do PPTX foram preservadas e incluídas no commit de entrega. Os PDFs removidos pelo autor e seus links foram retirados da árvore final.
+
+A tentativa de criação do repositório público foi bloqueada antes da execução, pois a divulgação pública do vídeo e dos slides exige confirmação explícita de visibilidade. Nenhum repositório remoto foi criado, nenhum push foi realizado e nenhuma PR foi aberta. Os arquivos locais e commits estão prontos para publicação após essa definição.
 
 ## Extração realizada
 

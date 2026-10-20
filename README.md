@@ -1,12 +1,12 @@
 # Predição e inteligência analítica para alfabetização no Brasil
 
-Tech Challenge da Fase 3. Projeto em desenvolvimento local, a partir da infraestrutura e da Gold da Fase 2.
+Tech Challenge da Fase 3, desenvolvido a partir da infraestrutura e da camada Gold da Fase 2.
 
 ## Problema e objetivo
 
 Antecipar risco educacional para apoiar a priorização de acompanhamento pedagógico. O objetivo principal é classificação individual de alfabetização, acompanhada de análises territoriais. As previsões são apoio à decisão humana, não decisões automáticas sobre alunos.
 
-## Estado atual
+## Visão geral
 
 **Experimentos reais e análises executados em 19/10/2026**, com 92.389 alunos de 5.193 municípios e contexto público de 5.571 municípios. A classificação inclui preparação integrada, otimização e validação por município; a análise territorial inclui perfis, metas e cenários. Na revisão final de 20/10/2026, **36 testes passaram**. Cinco prints reais do console GCP estão documentados. Há demonstração sem nuvem, previsão com modelo salvo, execuções isoladas, slides finais e vídeo executivo de **4min52s**, dentro do limite de cinco minutos.
 
@@ -136,13 +136,11 @@ A junção de metas foi corrigida localmente: `Municipal` corresponde ao código
 
 Esta versão é retrospectiva em 2024, com teste em municípios separados. Não demonstra generalização individual para anos futuros ou cumprimento futuro de metas. A primeira divulgação do indicador de 2023 ocorreu em maio de 2024, mas o snapshot atual pode conter revisões; uma reprodução estritamente histórica exigiria versões disponíveis à época. As métricas individuais são amostrais e não ponderadas, diferentes dos indicadores oficiais. O contexto social de 2010 é antigo, e a escassez de atributos individuais limita a personalização.
 
-O vídeo e os slides finais estão disponíveis abaixo. A publicação e integração por PRs são registradas em [versionamento](docs/GIT_WORKFLOW.md). Para evolução científica: novos dados independentes, atributos individuais/escolares anteriores ao desfecho e validação temporal mais ampla. [Checklist de atendimento](docs/atendimento_requisitos.md).
+Para evolução científica: novos dados independentes, atributos individuais/escolares anteriores ao desfecho e validação temporal mais ampla. [Checklist de atendimento](docs/atendimento_requisitos.md).
 
 ## Apresentação executiva
 
-[Vídeo executivo em MP4 (4min52s)](output/video/Apresentacao_Executiva_Fase3.mp4), [slides editáveis](output/presentation/Alfabetizacao_Fase3.pptx) e [roteiro editável](docs/roteiro_video.md). Para assistir ao vídeo, abra o arquivo e use a opção de baixar/raw do GitHub. São oito slides, incluindo gráficos nativos, fluxo de dados e captura real do GCP. O encerramento aparece depois das evidências.
-
-O roteiro foi reduzido de 584 para **507 palavras**, e a gravação final foi conferida: **292,5 segundos no MKV original e 292,4 segundos na cópia MP4**. O MP4 reutiliza vídeo H.264 e áudio AAC, sem recodificação. O arquivo original permanece local. Os PDFs auxiliares foram retirados da entrega a pedido do autor. Os slides finais incorporam suas alterações de apresentação. A narrativa distingue teste histórico v1, exploração v2, cenários territoriais e limitações de uso operacional.
+[Vídeo executivo em MP4 (4min52s)](<output/video/Tech Challenge Fase 3 - Willian Schön Lopes.mp4>), [slides editáveis](output/presentation/Alfabetizacao_Fase3.pptx) e [roteiro editável](docs/roteiro_video.md). Para assistir ao vídeo, abra o arquivo e use a opção de baixar/raw do GitHub. São oito slides, incluindo gráficos, fluxo de dados e captura real do GCP.
 
 ## Organização e Git
 
@@ -159,4 +157,4 @@ runs/           novas execuções isoladas e privadas (ignoradas no Git)
 docs/           protocolo e decisões
 ```
 
-O Git local registra escopo, implementação, correções, experimentos e interpretação em commits próprios. Existem cinco branches de desenvolvimento; a mais recente é `feat/executive-presentation`, para apresentação e roteiro. O plano das cinco PRs e a ordem de integração estão em [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md). A publicação no GitHub e as PRs serão feitas em etapa posterior; não são apresentadas como concluídas.
+O histórico Git registra escopo, implementação, correções, experimentos e interpretação em commits próprios. O desenvolvimento está organizado em cinco branches funcionais, com separação entre modelagem, experimentos, análise territorial, reprodução e apresentação executiva. A política de integração está em [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md).

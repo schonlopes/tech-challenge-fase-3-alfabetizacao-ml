@@ -1,43 +1,31 @@
-# Estado do projeto - 20/10/2026
+# Síntese técnica do projeto
 
-Extração autorizada e concluída: 92.389 registros válidos de alunos de 2024, distribuídos por 5.193 municípios. O snapshot está somente local, ignorado pelo Git. A amostra integra Silver individual, Gold municipal de 2023 e população IBGE de 2022. Não houve criação ou alteração de tabelas cloud nesta etapa.
+## Base analítica
 
-O experimento inicial selecionou regressão logística. A segunda versão testou contexto socioeconômico, mas não superou o modelo anterior na validação. Seus municípios de teste foram excluídos do novo desenvolvimento. Há SHAP global, dois perfis territoriais, análise de metas e cenários com limites explícitos. Relatórios em `v1/`, `v2/` e `territorial/`.
+A amostra contém 92.389 alunos válidos de 2024, distribuídos por 5.193 municípios. A extensão Gold de modelagem integra registros individuais da Silver, contexto municipal da Gold de 2023 e população IBGE de 2022. O snapshot individual permanece privado e fora do Git.
 
-Verificação: **36 testes aprovados**, incluindo contratos, integridade, grupos sem sobreposição, preparação sem vazamento, enriquecimento, metas ausentes, cenários, backtest, agregação de SHAP, previsão sem refit, recarga do artefato, isolamento de saídas e demo sem nuvem. Os testes artificiais verificam o software; os relatórios de resultados usam dados reais e distinguem validação e teste.
+SQL, hashes, contagens e metadados de consultas estão em `evidence/`. Cinco capturas reais do console GCP comprovam tabelas e consultas. O treinamento dos modelos ocorre localmente.
 
-SQL, metadados reduzidos de jobs e hash do snapshot estão em `evidence/`. O experimento verifica o hash antes do treinamento. Após o bloqueio inicial, houve autorização específica do usuário para a extração. Uma falha de codificação do Windows foi corrigida recuperando o resultado do mesmo job, sem repetir a consulta de extração.
+## Modelagem e análise territorial
 
-## Prints reais: concluídos
+A regressão logística original é o modelo de referência. O enriquecimento socioeconômico não melhorou o desempenho observado na validação. Os municípios do teste v1 foram excluídos do desenvolvimento v2.
 
-A primeira tentativa foi interrompida por limitação do controle da interface. Nesta etapa, o acesso pelo navegador à conta correta funcionou: cinco prints reais foram salvos e catalogados em `evidence/GCP_SCREENSHOTS.md`. Mostram tabela, particionamento e execução concluída de consulta. O treinamento de ML foi local. Uma captura adicional com dados da conta permanece privada e ignorada pelo Git.
+Os relatórios incluem métricas, bootstrap por município, recortes por UF, permutação, SHAP global, perfis municipais, comparação de metas e cenários. As limitações de atualização do contexto, generalização temporal e uso operacional estão explicitadas nas interpretações.
 
-## Versionamento
+## Qualidade e reprodução
 
-Cinco branches locais de desenvolvimento criadas. A quarta, `feat/reproducible-inference`, contém as melhorias de engenharia e a política explícita do modelo. A quinta, `feat/executive-presentation`, contém apresentação e roteiro. O plano de publicação e integração por PR está em `../docs/GIT_WORKFLOW.md`. Nenhum push, PR remoto ou integração à main foi realizado nesta etapa.
+Os 36 testes verificam contratos, separação de grupos, prevenção de vazamento, enriquecimento, metas ausentes, cenários, backtest, SHAP, serialização, inferência e isolamento de execuções. As demonstrações artificiais verificam o software e não representam desempenho educacional.
 
-## Melhorias de engenharia
+As previsões da ferramenta e da pipeline original foram idênticas nos 76.666 registros locais de desenvolvimento utilizados na conferência. Os resultados históricos foram preservados. Cada nova execução registra parâmetros, dependências, hashes e versão do código.
 
-A logística original permanece a referência; escores são o padrão da ferramenta, sem alerta automático. Os limiares F2 histórico e de capacidade exploratória estão separados em [modelo e política](../docs/modelo_e_politica.md). Há demo artificial completa sem conta GCP, previsão CSV/Parquet por artefato confiável e manifests por execução. Novas saídas analíticas ficam em `runs/`, ignoradas pelo Git; os relatórios históricos não foram substituídos.
+[Verificação de engenharia](VERIFICACAO_ENGENHARIA.md) e [revisão da entrega](REVISAO_FINAL.md).
 
-Foi conferida a equivalência exata entre a previsão direta da pipeline real v1 e a nova função de previsão nos 76.666 registros locais de desenvolvimento (treino/validação). Não houve novo treinamento, nova consulta cloud ou reavaliação do teste real. Essa checagem é de software, não uma nova estimativa de desempenho.
+## Materiais executivos
 
-Uma cópia somente dos arquivos versionados, sem snapshots/modelos reais, também passou nos 36 testes e na demonstração/previsão. Foi usado o mesmo ambiente de dependências, não uma instalação independente. [Resumo da verificação de engenharia](VERIFICACAO_ENGENHARIA.md).
+O vídeo tem aproximadamente 4min52s, dentro do limite de cinco minutos. A apresentação contém oito slides, com resultados, limitações e evidência real do GCP. Os materiais estão em `output/`, e o roteiro em `docs/roteiro_video.md`.
 
-## Pendências de entrega
+## Versionamento e privacidade
 
-Slides finais, roteiro e vídeo MP4 estão em `../output/` e `../docs/roteiro_video.md`. A revisão local terminou com 36 testes aprovados, links locais válidos, cinco capturas GCP íntegras e vídeo de 4min52s. Resta publicar no GitHub e integrar por PRs. A matriz de critérios está em `../docs/atendimento_requisitos.md`.
+As branches separam implementação, experimento real, enriquecimento territorial, inferência e apresentação. A política de integração está em [versionamento](../docs/GIT_WORKFLOW.md).
 
-Após a gravação inicial de 5min15s, o roteiro foi reduzido de 584 para 507 palavras. O vídeo final fornecido pelo autor tem 292,5s no MKV original e 292,4s na cópia MP4 sem recodificação. As alterações finais do PPTX foram preservadas e incluídas no commit de entrega. Os PDFs removidos pelo autor e seus links foram retirados da árvore final.
-
-A tentativa de criação do repositório público foi bloqueada antes da execução, pois a divulgação pública do vídeo e dos slides exige confirmação explícita de visibilidade. Nenhum repositório remoto foi criado, nenhum push foi realizado e nenhuma PR foi aberta. Os arquivos locais e commits estão prontos para publicação após essa definição.
-
-## Extração realizada
-
-Origem: tabelas do projeto GCP da Fase 2 e população pública do IBGE.
-
-Destino: arquivo Parquet local em `data/raw/alunos_gold_modelagem.parquet`, ignorado pelo Git.
-
-Conteúdo: 92.389 registros (aproximadamente 5% dos alunos válidos de 2024), com identificador de linha em hash, classificação alfabetizado/não alfabetizado convertida para risco, município, rede e série; contexto municipal da Gold 2023 e população de 2022. Não exporta nomes, ID bruto do aluno/escola, proficiência individual ou credenciais. Mesmo pseudonimizados, são registros individuais educacionais.
-
-Finalidade: treinar e avaliar a pipeline local. Nenhum upload ou publicação de microdados está previsto. A auditoria de rótulos passou sem divergências entre os casos válidos.
+Não são versionados microdados, modelos serializados, ambientes virtuais, credenciais ou resultados individuais. Os relatórios públicos contêm métricas e agregados, sem identificação de alunos.

@@ -1,10 +1,10 @@
-# Versionamento e publicação futura
+# Versionamento e integração
 
-O desenvolvimento desta Fase 3 tem um repositório Git próprio. Os commits são feitos conforme o trabalho acontece, sem reconstrução artificial de histórico.
+O projeto utiliza um repositório Git próprio. Os commits registram a evolução do código, dos experimentos e da documentação técnica.
 
-## Ramos locais
+## Branches de desenvolvimento
 
-| Branch | Finalidade | Integração futura |
+| Branch | Finalidade | Ordem de integração |
 | --- | --- | --- |
 | `main` | Escopo, auditoria inicial e documentação de partida | Base principal |
 | `feat/individual-risk-baseline` | Código da pipeline, testes, correções de extração e protocolo de validação | PR 1 para `main` |
@@ -13,9 +13,9 @@ O desenvolvimento desta Fase 3 tem um repositório Git próprio. Os commits são
 | `feat/reproducible-inference` | Política de decisão explícita, demo sem nuvem, previsão e execuções isoladas | PR 4 para `main`, depois da integração da PR 3 |
 | `feat/executive-presentation` | Slides executivos, gráficos, evidência GCP e roteiro de até cinco minutos | PR 5 para `main`, depois da integração da PR 4 |
 
-A segunda branch foi criada a partir da primeira, a terceira a partir da segunda, a quarta a partir da terceira e a quinta a partir da quarta. As dependências serão integradas nessa ordem. Os commits de implementação permanecerão acessíveis no histórico. Novos enriquecimentos e análises devem utilizar outras branches a partir da base adequada, com PRs que expliquem as respectivas decisões.
+A segunda branch foi criada a partir da primeira, a terceira a partir da segunda, a quarta a partir da terceira e a quinta a partir da quarta. As dependências seguem essa ordem de integração. Os commits de implementação permanecem acessíveis no histórico. Novos enriquecimentos e análises devem utilizar outras branches a partir da base adequada, com PRs que expliquem as respectivas decisões.
 
-## PRs futuras
+## Procedimento de integração
 
 1. Publicar `main` e a branch de implementação no repositório da Fase 3.
 2. Abrir PR da implementação com objetivo, decisões sobre vazamento e validação, testes e limitações.
@@ -24,11 +24,11 @@ A segunda branch foi criada a partir da primeira, a terceira a partir da segunda
 5. Publicar a terceira branch e abrir a PR de enriquecimento e análise territorial após integrar a segunda.
 6. Publicar a quarta branch e abrir a PR de reprodução/previsão após integrar a terceira.
 7. Publicar a quinta branch e abrir a PR dos materiais executivos após integrar a quarta. Conferir a versão dos slides e a gravação antes da entrega.
-8. Para cada nova mudança, registrar revisão e justificativas pertinentes. Não fabricar comentários, aprovações, colaboração ou cronologia.
+8. Registrar em cada PR o objetivo, as decisões técnicas, os testes e as limitações das alterações.
 
-As PRs acima são **planejadas**, não foram criadas. Nenhum envio ao GitHub foi realizado nesta etapa.
+As PRs e suas integrações devem ser verificadas no histórico do repositório remoto. A tabela descreve a organização das mudanças e não substitui os registros de revisão e merge do GitHub.
 
-Foi preparado um workflow para testes, compilação e conferência do repositório em push/PR, sem credenciais GCP ou extração de microdados. A execução remota desse workflow só poderá ser comprovada após a publicação. As ações seguem os exemplos oficiais de [checkout](https://github.com/actions/checkout) e [setup-python](https://github.com/actions/setup-python).
+O workflow executa testes, compilação e conferência do repositório em push/PR, sem credenciais GCP ou extração de microdados. A execução remota deve ser verificada na seção Actions do GitHub. As ações seguem os exemplos oficiais de [checkout](https://github.com/actions/checkout) e [setup-python](https://github.com/actions/setup-python).
 
 ## O que versionar
 

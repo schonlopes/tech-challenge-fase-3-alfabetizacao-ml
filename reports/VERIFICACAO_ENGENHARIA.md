@@ -17,7 +17,7 @@ Escopo: política explícita, demonstração sem conta cloud, previsão com arte
 
 Os manifests de execução e os arquivos de teste manual ficam em `runs/`, com hashes, parâmetros, versão do código e indicação de conclusão. Não publicar essa pasta inteira: inclui escores e pode conter dados individuais ou modelos. O resumo acima é a evidência agregada para versionamento.
 
-O código do workflow passou a incluir a demonstração artificial, mas **a CI no GitHub ainda não foi executada**. Publicação e PRs continuam pendentes de etapa posterior. A matriz de critérios e o README foram atualizados sem alterar as métricas científicas históricas.
+O workflow inclui a demonstração artificial, os testes e a conferência do repositório. A execução remota deve ser verificada na seção Actions do GitHub. As métricas científicas históricas permanecem preservadas.
 
 ## Limitações preservadas
 

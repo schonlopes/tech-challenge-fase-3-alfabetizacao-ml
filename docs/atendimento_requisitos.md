@@ -19,9 +19,9 @@ Avaliação local em 19/10/2026. Esta matriz distingue implementação, evidênc
 | Enriquecimento externo | Implementado | IPEA 2010, PIB 2021 e população 2022, com proveniência e limites de atualização |
 | Estrutura, README, código e documentação | Implementado localmente | Pastas exigidas, scripts reproduzíveis e relatórios; a proposta aceita scripts ou notebooks |
 | Histórico e branches Git | Implementado localmente | Commits reais e cinco branches; `GIT_WORKFLOW.md` |
-| Repositório remoto e PRs | Pendente | Planejadas cinco PRs em sequência; ainda não publicadas |
+| Repositório remoto e PRs | Verificação no GitHub | Conferir as PRs e os registros de integração conforme a política de versionamento |
 | Evidência visual do GCP (feedback da Fase 2) | Adicionada | Cinco prints reais em `reports/evidence/GCP_SCREENSHOTS.md` |
-| Vídeo executivo até 5 minutos | Concluído | Vídeo final conferido: 292,5s no MKV original e 292,4s no MP4 publicado; oito slides e roteiro de 507 palavras |
+| Vídeo executivo até 5 minutos | Concluído | Vídeo final conferido: 292,5s no MKV original e 292,4s no MP4 da entrega; oito slides e roteiro de 507 palavras |
 
 ## Hipóteses e decisões decorrentes
 

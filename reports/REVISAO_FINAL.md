@@ -9,12 +9,12 @@
 
 ## Apresentação e vídeo
 
-- O PPTX final do autor é estruturalmente legível e contém oito slides. Suas alterações foram preservadas.
+- O PPTX é estruturalmente legível e contém oito slides.
 - O vídeo original contém imagem 1920x1080, codec H.264, áudio AAC estéreo e duração de **292,5 segundos**, inferior ao teto de 300 segundos.
-- Foi preparada uma cópia MP4 com `-c copy` e `faststart`, sem recodificar as trilhas e preservando o MKV original. O MP4 tem **292,4 segundos** e fica abaixo de 100 MiB.
+- O MP4 utiliza as trilhas originais H.264/AAC com `faststart`, sem recodificação. Tem **292,4 segundos** e fica abaixo de 100 MiB.
 - A inspeção visual por amostras cobre os slides de dados, validação, métricas, SHAP, perfis, GCP e encerramento. As métricas visíveis correspondem aos relatórios, e o apresentador não cobre os dados principais nessas amostras.
 - A trilha de áudio foi decodificada com sucesso e contém sinal. Não foi feita transcrição automática integral nem certificação subjetiva da qualidade de escuta.
-- Os PDFs removidos pelo autor foram retirados da árvore final e seus links de entrega foram removidos da documentação. Versões históricas continuam recuperáveis pelo Git.
+- Os materiais executivos da entrega são o vídeo MP4, os slides editáveis e o roteiro em Markdown.
 
 ## Critérios e limites
 

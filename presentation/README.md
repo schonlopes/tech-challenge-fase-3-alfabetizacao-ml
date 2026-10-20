@@ -1,16 +1,16 @@
 # Materiais da apresentação executiva
 
-Fonte editorial: `content.json`, com títulos, falas, tempos e fontes locais. Em 20/10/2026, a fala foi enxugada após o usuário informar uma gravação de 5min15s. O roteiro e o novo PDF usam a fala revisada. O PowerPoint aberto com alterações locais foi preservado, portanto suas notas ainda podem conter a versão anterior. Não regenerar o deck automaticamente sobre as alterações do usuário.
+Fonte editorial: `content.json`, com títulos, falas, tempos e fontes locais. A fala foi enxugada após a gravação inicial de 5min15s. O PowerPoint final incorpora as alterações do autor e deve ser preservado; não regenerá-lo automaticamente sobre essas alterações.
 
-Saídas finais: `../output/presentation/Alfabetizacao_Fase3.pptx`, `../output/pdf/Apresentacao_Alfabetizacao_Fase3.pdf` e `../output/pdf/Roteiro_Leitura_iPhone_Fase3_Enxuto.pdf`. O PDF de roteiro anterior foi mantido para referência. A versão editável revisada está em `../docs/roteiro_video.md`.
+Entregáveis: [slides editáveis](../output/presentation/Alfabetizacao_Fase3.pptx), [vídeo MP4](../output/video/Apresentacao_Executiva_Fase3.mp4) e [roteiro editável](../docs/roteiro_video.md). Os PDFs auxiliares foram excluídos pelo autor e não fazem parte da árvore final de entrega. Versões anteriores permanecem recuperáveis no histórico Git.
 
-Oito slides, **507 palavras**, meta estimada de 4min45s. A projeção proporcional à gravação anterior é de cerca de 4min34s, sem garantir a duração da nova gravação. O usuário precisa ensaiar com cronômetro. O roteiro móvel usa fonte de 24 pontos e páginas em proporção de tela de celular. Páginas de continuação mantêm o slide atual.
+Oito slides, roteiro de **507 palavras**, gravação final com **292,5 segundos no MKV original** e **292,4 segundos no MP4**. A cópia MP4 permite distribuição mais compatível, com as mesmas trilhas H.264/AAC e sem recodificação. O MKV original permanece somente na pasta local do Tech Challenge.
 
 ## Conteúdo e evidências
 
 Problema educacional, integração individual/histórica, prevenção de vazamento, escolhas de modelagem, desempenho, SHAP, perfis municipais, metas, evidência real do GCP e aplicação estratégica. A captura não representa treinamento cloud. AP não é acurácia; a v2 não tem novo teste independente; os cenários de 2030 não são previsões validadas.
 
-Gráficos e diagrama são objetos editáveis no PPTX. Os gráficos têm planilhas incorporadas com valores arredondados a seis casas, suficientes para a precisão exibida. Os relatórios científicos preservam a precisão original. O PDF de slides é uma exportação visual das páginas renderizadas, sem editabilidade dos gráficos.
+Gráficos e diagrama são objetos editáveis no PPTX. Os gráficos têm planilhas incorporadas com valores arredondados a seis casas, suficientes para a precisão exibida. Os relatórios científicos preservam a precisão original.
 
 ## Reprodução dos materiais
 
@@ -22,4 +22,4 @@ Para atualizar **somente o roteiro**, preservando o PPTX e o PDF dos slides, exe
 
 O finalizador recusa substituir um PPTX final existente. Para uma nova revisão, escolher outro nome por `FASE3_DECK_NAME`. Renders, manifests de tempo e registros de validação permanecem privados em `runs/presentation-build`; pastas temporárias `.chart-data-*` também são ignoradas. Os materiais não dependem dos microdados dos alunos.
 
-As PRs remotas e a gravação não são geradas por esses comandos. Os slides não afirmam que essas etapas já ocorreram.
+Esses geradores não gravam vídeos nem criam PRs. O registro de publicação fica em `../docs/GIT_WORKFLOW.md`. A geração de PDFs continua disponível como opção de apoio, mas a pasta `output/pdf/` é ignorada e não integra a entrega final.

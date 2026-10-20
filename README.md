@@ -8,7 +8,7 @@ Antecipar risco educacional para apoiar a priorização de acompanhamento pedag�
 
 ## Estado atual
 
-**Experimentos reais e análises executados em 19/10/2026**, com 92.389 alunos de 5.193 municípios e contexto público de 5.571 municípios. A classificação inclui preparação integrada, otimização e validação por município; a análise territorial inclui perfis, metas e cenários. **36 testes passaram**, e cinco prints reais do console GCP estão documentados. Há demonstração sem nuvem, previsão com modelo salvo e execuções isoladas. Slides e roteiro executivo estão preparados localmente; faltam gravação do vídeo e publicação com PRs para concluir a entrega.
+**Experimentos reais e análises executados em 19/10/2026**, com 92.389 alunos de 5.193 municípios e contexto público de 5.571 municípios. A classificação inclui preparação integrada, otimização e validação por município; a análise territorial inclui perfis, metas e cenários. Na revisão final de 20/10/2026, **36 testes passaram**. Cinco prints reais do console GCP estão documentados. Há demonstração sem nuvem, previsão com modelo salvo, execuções isoladas, slides finais e vídeo executivo de **4min52s**, dentro do limite de cinco minutos.
 
 Amostras sintéticas da Fase 2 e eventos simulados de Pub/Sub não serão utilizados para avaliar os modelos. Fixtures artificiais existem somente nos testes de software e não constituem evidência de desempenho educacional.
 
@@ -136,13 +136,13 @@ A junção de metas foi corrigida localmente: `Municipal` corresponde ao código
 
 Esta versão é retrospectiva em 2024, com teste em municípios separados. Não demonstra generalização individual para anos futuros ou cumprimento futuro de metas. A primeira divulgação do indicador de 2023 ocorreu em maio de 2024, mas o snapshot atual pode conter revisões; uma reprodução estritamente histórica exigiria versões disponíveis à época. As métricas individuais são amostrais e não ponderadas, diferentes dos indicadores oficiais. O contexto social de 2010 é antigo, e a escassez de atributos individuais limita a personalização.
 
-Pendentes para entrega: ensaio/gravação do vídeo, conferência final dos links e publicação por PRs. Para evolução científica: novos dados independentes, atributos individuais/escolares anteriores ao desfecho e validação temporal mais ampla. [Checklist de atendimento](docs/atendimento_requisitos.md).
+O vídeo e os slides finais estão disponíveis abaixo. A publicação e integração por PRs são registradas em [versionamento](docs/GIT_WORKFLOW.md). Para evolução científica: novos dados independentes, atributos individuais/escolares anteriores ao desfecho e validação temporal mais ampla. [Checklist de atendimento](docs/atendimento_requisitos.md).
 
 ## Apresentação executiva
 
-[Slides editáveis](output/presentation/Alfabetizacao_Fase3.pptx), [slides em PDF](output/pdf/Apresentacao_Alfabetizacao_Fase3.pdf) e [roteiro enxuto com fonte grande para celular](output/pdf/Roteiro_Leitura_iPhone_Fase3_Enxuto.pdf). São oito slides, incluindo gráficos nativos, fluxo de dados e captura real do GCP. O encerramento aparece depois das evidências.
+[Vídeo executivo em MP4 (4min52s)](output/video/Apresentacao_Executiva_Fase3.mp4), [slides editáveis](output/presentation/Alfabetizacao_Fase3.pptx) e [roteiro editável](docs/roteiro_video.md). Para assistir ao vídeo, abra o arquivo e use a opção de baixar/raw do GitHub. São oito slides, incluindo gráficos nativos, fluxo de dados e captura real do GCP. O encerramento aparece depois das evidências.
 
-O [roteiro editável](docs/roteiro_video.md) foi reduzido de 584 para **507 palavras** em 20/10/2026, após o usuário informar que a primeira gravação durou 5min15s. No mesmo ritmo, a projeção proporcional é de aproximadamente 4min34s, mantendo a meta de até **4min45s** para acomodar pausas. O novo tempo ainda precisa de ensaio. O PowerPoint aberto com alterações locais foi preservado: suas notas ainda podem conter a fala anterior; usar o roteiro enxuto na nova gravação. A apresentação distingue teste histórico v1, exploração v2, cenários territoriais e limitações de uso operacional. Não afirma que PRs remotas já existem.
+O roteiro foi reduzido de 584 para **507 palavras**, e a gravação final foi conferida: **292,5 segundos no MKV original e 292,4 segundos na cópia MP4**. O MP4 reutiliza vídeo H.264 e áudio AAC, sem recodificação. O arquivo original permanece local. Os PDFs auxiliares foram retirados da entrega a pedido do autor. Os slides finais incorporam suas alterações de apresentação. A narrativa distingue teste histórico v1, exploração v2, cenários territoriais e limitações de uso operacional.
 
 ## Organização e Git
 

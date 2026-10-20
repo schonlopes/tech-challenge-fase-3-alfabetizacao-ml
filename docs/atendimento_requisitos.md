@@ -21,7 +21,7 @@ Avaliação local em 19/10/2026. Esta matriz distingue implementação, evidênc
 | Histórico e branches Git | Implementado localmente | Commits reais e cinco branches; `GIT_WORKFLOW.md` |
 | Repositório remoto e PRs | Pendente | Planejadas cinco PRs em sequência; ainda não publicadas |
 | Evidência visual do GCP (feedback da Fase 2) | Adicionada | Cinco prints reais em `reports/evidence/GCP_SCREENSHOTS.md` |
-| Vídeo executivo até 5 minutos | Regravação dentro do limite pendente | Primeira gravação informada: 5min15s. Roteiro reduzido a 507 palavras, mantendo oito slides e meta de até 4min45s; novo ensaio necessário |
+| Vídeo executivo até 5 minutos | Concluído | Vídeo final conferido: 292,5s no MKV original e 292,4s no MP4 publicado; oito slides e roteiro de 507 palavras |
 
 ## Hipóteses e decisões decorrentes
 

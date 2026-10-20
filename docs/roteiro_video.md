@@ -1,8 +1,7 @@
 # Roteiro do vídeo executivo - Fase 3
 
 Meta de gravação: **4min45s**, com 15 segundos de margem até o limite de cinco minutos.
-Versão enxuta após a gravação anterior de 5min15s, informada pelo usuário. O novo tempo ainda é estimado. Ensaiar antes de gravar.
-O PDF móvel usa fonte de 24 pontos. Continuação de página não significa trocar de slide.
+Versão enxuta após a gravação inicial de 5min15s. A gravação final foi conferida em 20/10/2026 e tem 4min52,5s, dentro do limite de cinco minutos. Os intervalos abaixo são referências do planejamento, não marcações exatas do vídeo final. Os PDFs auxiliares foram removidos da entrega pelo autor.
 
 ## Slide 1 - Predição e inteligência analítica para alfabetização
 

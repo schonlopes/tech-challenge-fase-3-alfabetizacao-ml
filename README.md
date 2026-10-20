@@ -158,3 +158,5 @@ docs/           protocolo e decisões
 ```
 
 O histórico Git registra escopo, implementação, correções, experimentos e interpretação em commits próprios. O desenvolvimento está organizado em cinco branches funcionais, com separação entre modelagem, experimentos, análise territorial, reprodução e apresentação executiva. A política de integração está em [docs/GIT_WORKFLOW.md](docs/GIT_WORKFLOW.md).
+
+Repositório público: [Tech Challenge Fase 3 — Alfabetização e ML](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml). As [Pull Requests](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pulls?q=is%3Apr) registram as integrações, e a seção [Actions](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/actions) permite consultar os resultados das verificações automáticas.

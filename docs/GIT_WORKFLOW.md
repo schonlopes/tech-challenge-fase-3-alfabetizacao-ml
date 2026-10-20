@@ -26,7 +26,17 @@ A segunda branch foi criada a partir da primeira, a terceira a partir da segunda
 7. Publicar a quinta branch e abrir a PR dos materiais executivos após integrar a quarta. Conferir a versão dos slides e a gravação antes da entrega.
 8. Registrar em cada PR o objetivo, as decisões técnicas, os testes e as limitações das alterações.
 
-As PRs e suas integrações devem ser verificadas no histórico do repositório remoto. A tabela descreve a organização das mudanças e não substitui os registros de revisão e merge do GitHub.
+## Registros no GitHub
+
+As cinco etapas possuem PRs reais, com descrição do objetivo, decisões técnicas e limitações:
+
+1. [PR #1 — Pipeline supervisionada e validação por município](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pull/1).
+2. [PR #2 — Experimento real e avaliação v1](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pull/2).
+3. [PR #3 — Enriquecimento, SHAP, territórios e evidências GCP](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pull/3).
+4. [PR #4 — Inferência, reprodução e rastreabilidade](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pull/4).
+5. [PR #5 — Apresentação, vídeo e revisão final](https://github.com/schonlopes/tech-challenge-fase-3-alfabetizacao-ml/pull/5).
+
+Os estados e registros de merge são consultáveis diretamente nas PRs. A integração utiliza merge commits, preservando os commits das branches; não há alegação de revisão independente por terceiros.
 
 O workflow executa testes, compilação e conferência do repositório em push/PR, sem credenciais GCP ou extração de microdados. A execução remota deve ser verificada na seção Actions do GitHub. As ações seguem os exemplos oficiais de [checkout](https://github.com/actions/checkout) e [setup-python](https://github.com/actions/setup-python).
 
